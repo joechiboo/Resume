@@ -231,7 +231,7 @@ _Pvt_Extensions
 *.apk
 *.mp4
 .fake/
-src/Core/Migrations
-Code/WorkFlow/BuildProcessTemplates/
-Resources/LocationSampleCode/typings
-Code/WorkFlow/WorkFlow/Migrations/
+Resume/Unitity/*.*
+GMailer.cs/
+GMailer.cs
+Resume/Untity/GMailer.cs

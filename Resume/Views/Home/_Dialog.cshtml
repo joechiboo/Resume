@@ -1,0 +1,611 @@
+﻿<style>
+    span.subtitle {
+        font-size: 0.75em;
+    }
+    /*fix table align:center*/ 
+    th {
+        *text-align: left;
+        text-align: center;
+    }
+    /*fix carousel align:center*/ 
+    .carousel-inner > .item > img, video {
+        margin: 0 auto;
+    }
+    p {
+        text-align:left;
+    }
+
+    .portfolio-modal .modal-content h2 {      
+      font-size: 1.6em;
+    }
+
+    #justfont-badge {
+        display:none;
+    }
+
+    @@media (max-width: 990px) {
+        #justfont-badge {
+            display:none;
+        }
+
+        #LeisureCtrl > div > button{
+            display:none;
+        }
+
+        #LeisureCtrl > div > button.active {
+            display:block;
+        }
+
+        #LeisureCtrl > div > button.MidShow {
+            display:block;
+        }
+    }
+</style>
+
+@{
+    Boolean OverBDay = DateTime.Now.ToString("MMdd").CompareTo("0319") != -1;
+    int Age = DateTime.Now.Year - 1987 - 1;
+    if (OverBDay) {
+        Age = Age + 1;
+    }
+}
+
+<!-- Portfolio Modals -->
+<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>selected work</h2>
+                        <hr class="star-primary">
+                        <table class="table table-striped table-hover">
+                            <tr>
+                                <th>Major</th>
+                                <th>專案名稱</th>
+                                <th>工作任務</th>
+                                <th class="Remark"></th>
+                            </tr>
+                            <tr>
+                                <td>１</td>
+                                <td><a href="http://weese.lovee.be/" target="_blank">Weese</a></td>
+                                <td>Workflow、BPM</td>
+                                <td class="Remark">物聯網、流程管控</td>
+                            </tr>
+                            <tr>
+                                <td>２</td>
+                                <td><a href="https://itunes.apple.com/us/app/moosy/id1040383764?l=zh&ls=1&mt=8" target="_blank">Moosy</a></td>
+                                <td>社群互助平台App</td>
+                                <td class="Remark">Parse、NoSQL</td>
+                            </tr>
+
+                            <tr>
+                                <td>　</td>
+                                <td></td>
+                                <td></td>
+                                <td class="Remark"></td>
+                            </tr>
+
+                            <tr>
+                                <th>Before</th>
+                                <th></th>
+                                <th></th>
+                                <th class="Remark"></th>
+                            </tr>
+                            <tr>
+                                <td>１</td>
+                                <td><a href="https://www.examservice.com.tw/" target="_blank">測驗服務專區</a></td>
+                                <td>電子商務平台</td>
+                                <td class="Remark">會員系統、購物車</td>
+                            </tr>
+                            <tr>
+                                <td>２</td>
+                                <td><a href="http://vol.toeic.com.tw/" target="_blank">志工歷程平台</a></td>
+                                <td>行政作業電子化</td>
+                                <td class="Remark">敏捷式專案開發</td>
+                            </tr>
+                            <tr>
+                                <td>３</td>
+                                <td><a href="https://docs.google.com/presentation/d/1o8wMB3w1GFzAHgo4Aj92EPqpsxqORiLyoJ8CbuIWWW0/edit?usp=sharing" target="_blank">搶救杰倫大作戰</a></td>
+                                <td>專案管理</td>
+                                <td class="Remark">提高產能、降低浪費</td>
+                            </tr>
+
+                            <tr>
+                                <td>　</td>
+                                <td></td>
+                                <td></td>
+                                <td class="Remark"></td>
+                            </tr>
+
+                            <tr>
+                                <th>Part time</th>
+                                <th></th>
+                                <th></th>
+                                <th class="Remark"></th>
+                            </tr>
+                            <tr>
+                                <td>１</td>
+                                <td><a href="http://xn--lcu433c.xn--kpry57d/" target="_blank">知悅顧問</a></td>
+                                <td>接案起源</td>
+                                <td class="Remark">找尋團隊成員，架構設計</td>
+                            </tr>
+                            <tr>
+                                <td>２</td>
+                                <td><a href="http://www.taipeigolf.org.tw/" target="_blank">台北高爾夫協會</a></td>
+                                <td>網站重構</td>
+                                <td class="Remark">翻寫資料庫、後台</td>
+                            </tr>
+                            <tr>
+                                <td>３</td>
+                                <td><a href="http://www.gmall-foods.com/" target="_blank">昆山绿牧</a></td>
+                                <td>新創企業</td>
+                                <td class="Remark">需求訪談、合作分工</td>
+                            </tr>
+                            @*<tr>
+                                <td>４</td>
+                                <td><a href="http://blueberrycom.azurewebsites.net/" target="_blank">百律電子儀器</a></td>
+                                <td></td>
+                                <td class="Remark"></td>
+                            </tr>*@
+                        </table>
+                             
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>Leisure</h2>
+                        <hr class="star-primary">
+                        
+                        <div class="row" id="LeisureCtrl">
+                            <div class="col-md-3 col-xs-12">
+                                <button title="myPainting" type="button" class="btn btn-info btn-lg" style="width:100%">Painting</button>
+                            </div>
+                            <div class="col-md-3 col-xs-12">
+                                <button title="myCreating" type="button" class="btn btn-info btn-lg" style="width:100%">Creating</button>
+                            </div>
+                            <div class="col-md-3 col-xs-12">
+                                <button title="myExercise" type="button" class="btn btn-info btn-lg active" style="width:100%">Exercise</button>
+                            </div>
+                            <div class="col-md-3 col-xs-12">
+                                <button title="myMusic" type="button" class="btn btn-info btn-lg" style="width:100%">Music</button>
+                            </div>
+                        </div>
+                            
+                        <br/>
+
+                        <div class="row">
+                            <div id="myPainting" class="carousel slide">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myPainting" data-slide-to="0" class="active"></li>
+                                    @for (var i = 1; i < 7; i++)
+                                    {
+                                        <li data-target="#myPainting" data-slide-to="@i"></li>
+                                    }
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="~/img/drawsomething/partice-3.png" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/partice-5.png" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/partice-6.png" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/partice-10.png" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/mother.jpg" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/母雞帶小雞.jpg" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/豬豬.jpg" />
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#myPainting" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                                <a class="right carousel-control" href="#myPainting" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div id="myCreating" class="carousel slide">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myCreating" data-slide-to="0" class="active"></li>
+                                    @for (var i = 1; i < 8; i++)
+                                    {
+                                        <li data-target="#myCreating" data-slide-to="@i"></li>
+                                    }
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="~/img/arduino/logo.png" style="max-height:480px;cursor:pointer" onclick="location.href='@Url.Action("Index", "SocialCircle")'" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/arduino/成品.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/arduino/設計圖.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item ">
+                                        <img src="~/img/arduino/1.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/arduino/3.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item">                                    
+                                        <iframe style="max-height:480px" src="https://www.youtube.com/embed/y-yF6d4JFF8" frameborder="0" allowfullscreen></iframe>  
+                                        @*<video id="video1" controls="controls" style=" width: 70%;">
+                                            <source src="https://youtu.be/y-yF6d4JFF8" type="video/youtube" />
+                                        </video>*@
+                                    </div>                                  
+                                    <div class="item">
+                                        <img src="~/img/arduino/Button.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/arduino/HelloWorld.jpg" style="max-height:480px" />
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#myCreating" data-slide="prev"><span class=" glyphicon glyphicon-chevron-left"></span></a>
+                                <a class="right carousel-control" href="#myCreating" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div id="myExercise" class="carousel slide">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myExercise" data-slide-to="0" class="active"></li>
+                                    @for (var i = 1; i < 2; i++)
+                                    {
+                                        <li data-target="#myExercise" data-slide-to="@i"></li>
+                                    }
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <video id="video1" controls="controls">
+                                            <source src="~/img/exercise/%e4%b8%8a%e7%b1%83.mp4" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                    <div class="item">
+                                        <video id="video2" controls="controls" style="width: 70%;">
+                                            <source src="~/img/exercise/%e4%b8%ad%e8%b7%9d%e9%9b%a2.mp4" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#myExercise" data-slide="prev"><span class=" glyphicon glyphicon-chevron-left"></span></a>
+                                <a class="right carousel-control" href="#myExercise" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div id="myMusic" class="carousel slide">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myMusic" data-slide-to="0" class="active"></li>
+                                    @for (var i = 1; i < 3; i++)
+                                    {
+                                        <li data-target="#myMusic" data-slide-to="@i"></li>
+                                    }
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="~/img/music/尾牙.jpg" style="max-height:480px" />
+                                    </div>     
+                                    <div class="item">
+                                        <img src="~/img/music/HongKung.jpg" style="max-height:480px" />
+                                    </div> 
+                                    <div class="item">
+                                        <img src="~/img/music/violin.jpg" style="max-height:480px" />
+                                    </div>                             
+                                </div>
+                                <a class="left carousel-control" href="#myMusic" data-slide="prev"><span class=" glyphicon glyphicon-chevron-left"></span></a>
+                                <a class="right carousel-control" href="#myMusic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                            </div>
+                        </div>
+
+                        <br/>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>Music</h2>
+                        <hr class="star-primary">
+                        
+                        <h2 class="glyphicon glyphicon-cog" aria-hidden="true">建構中</h2>
+
+                        <p></p>
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>Game</h2>
+                        <hr class="star-primary">
+                        
+                        <h2 class="glyphicon glyphicon-cog" aria-hidden="true">建構中</h2>
+
+                        <p></p>
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>Exercise</h2>
+                        <hr class="star-primary">
+                        
+                        <h2 class="glyphicon glyphicon-cog" aria-hidden="true">建構中</h2>
+                        
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="modal-body" style="color: #7f8c97; background-color: #e9f0f5;">
+                        <h2>Experience</h2>
+                        <hr class="star-primary">
+                        @*<img src="img/portfolio/safe.png" class="img-responsive img-centered" alt="">*@
+                                                
+                        <section id="cd-timeline" class="cd-container" style="text-align:center">
+
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img cd-picture">
+                                    <img src="img/seat.svg" alt="Location">
+                                </div> <!-- cd-timeline-img -->
+                                <div class="cd-timeline-content">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <a href="http://www.vipabc.com/" target="_blank">威比网络科技</a>
+                                        </h2>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <span class="subtitle">研發工程師</span>
+                                        </h2>
+                                    </div>
+                                    <p>公司的環境相當好，員工人數十分龐大，特別是R&D。主管、老闆、大老闆感覺非常厲害，和以往的工作經驗相當不同。目前主要的工作任務是寫ASP打醬油。</p>
+                                    <div style="clear:both"></div>
+                                    <span class="cd-date">2016 Jun -  @DateTime.Now.ToString("yyyy/MM/dd") (now) - @Age 歲</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div> <!-- cd-timeline-block -->
+
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img cd-picture">
+                                    <img src="img/seat.svg" alt="Location">
+                                </div> <!-- cd-timeline-img -->
+                                <div class="cd-timeline-content">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <a href="http://www.lovee.be/" target="_blank">Lov'ee</a>
+                                        </h2>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <span class="subtitle">資訊工程太帥(65K)</span>
+                                        </h2>
+                                    </div>
+                                    <p>和未婚妻一同前往上海工作(公司不同)。公司的願景是走老人照護、生技醫療的方向。主要任務為建置一個bpm系統和互助平台的App。新創生活和以往的經驗很不同，又來上海文化交流增廣見聞。App方面主要做後端Parse。bpm系統則是用.net MVC，後來有嘗試參差Angular.io + TypeScript和導入BDD的開發模式、Unit Test。</p>
+                                    <div style="clear:both"></div>
+                                    <span class="cd-date">2015 Aug - 2016 Jun</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div> <!-- cd-timeline-block -->
+
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img cd-picture">
+                                    <img src="img/seat.svg" alt="Location">
+                                </div> <!-- cd-timeline-img -->
+                                <div class="cd-timeline-content">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <a href="http://www.palmforce.com.tw/" target="_blank">palmforce</a>
+                                        </h2>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <span class="subtitle" id="TootlgeNamecard" style="cursor:pointer">程式設計太帥(45k)</span>
+                                            @Html.Partial("_NameCard")
+                                        </h2>
+                                    </div>
+                                    <p>主要工作內容為網頁系統開發，使用.net MVC framework，走微軟solution。公司有設計部門，把html、css程式化稍作整理，前端主要寫jquery。後端寫entity framework接mssql server，後期也玩了一些跨平台(Cordova)的APP製作。</p>
+                                    <div style="clear:both"></div>
+                                    <span class="cd-date">2012 Mar - 2015 Aug</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div> <!-- cd-timeline-block -->
+
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img cd-picture">
+                                    <img src="img/seat.svg" alt="Location">
+                                </div> <!-- cd-timeline-img -->
+                                <div class="cd-timeline-content">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            嘉誠資訊
+                                        </h2>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <span class="subtitle">資訊工程師(32k)</span>
+                                        </h2>
+                                    </div>                                    
+                                    <p>
+                                        我做網頁的啟蒙者，在什麼都不會的狀況學了ASP，也熟了往後很常運用的T-SQL、JQuery。開始我的微軟人生。公司主要做政府機關單位內部使用的差勤、經費系統，需要到客戶單位做維護更新服務。一條龍的服務模式讓我了解架網站的流程。
+                                    </p>
+                                    <div style="clear:both"></div>
+                                    <span class="cd-date">2010 Dec - 2011 Dec</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div> <!-- cd-timeline-block -->
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img cd-picture">
+                                    <img src="img/seat.svg" alt="Location">
+                                </div> <!-- cd-timeline-img -->
+                                <div class="cd-timeline-content">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <a href="http://www.aaeon.com/en/" target="_blank">研揚科技</a>
+                                        </h2>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <span class="subtitle">測試作業員(23k)</span>
+                                        </h2>
+                                    </div> 
+                                    <p>退伍後覺得自己什麼都可以做，很快的就找到了工作，工作內容很基層，見識不同年齡層的社會圈，遇到很多不錯的老媽子。每天騎腳踏車上班，前輩們會教怎麼用軟體測試板子，然後大概測個800-1000片。</p>
+                                    <div style="clear:both"></div>
+                                    <span class="cd-date">2010 Oct - 2010 Nov</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div> <!-- cd-timeline-block -->
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img cd-movie">                                    
+                                    <img src="img/tank.svg" alt="Movie">
+                                </div> <!-- cd-timeline-img -->
+                                <div class="cd-timeline-content">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            海軍陸戰隊
+                                        </h2>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <span class="subtitle">戰車領導士(13k)</span>
+                                        </h2>
+                                    </div>                                    
+                                    <p>
+                                        身分職業的轉換，也見到許多不同生活環境的人。<br/>
+                                        當時候的我在想，既然大家都是服11個月的兵役，為何不認真努力地看待這份軍人的職業。也可能是運氣不好，我是連內唯一一個義務役還要背值星的。
+                                    </p>
+                                    <div style="clear:both"></div>
+                                    <span class="cd-date">2009 Oct - 2010 Sep</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div> <!-- cd-timeline-block -->
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img cd-location">
+                                    <img src="img/education.svg" alt="Picture">                                    
+                                </div> <!-- cd-timeline-img -->
+                                <div class="cd-timeline-content">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <a href="https://www.ntut.edu.tw/bin/home.php" target="_blank">台北科技大學</a>
+                                        </h2>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <span class="subtitle">資訊工程系</span>
+                                        </h2>                                                                            
+                                    </div>
+                                    <p>考上了大學後，想任我玩四年。參加了許多活動，兩屆的才子佳人、賦展鋼琴社，系籃、系排系學會。當時有位老師和我說一句話我直到最近才明白，就是「不用對自己太好」。</p>
+                                    <div style="clear:both"></div>
+                                    <span class="cd-date">2005 Sep - 2009 Jun</span>
+                                </div> <!-- cd-timeline-content -->
+                            </div> <!-- cd-timeline-block -->
+                            <div class="cd-timeline-block">
+                                <div class="cd-timeline-img cd-location">
+                                    <img src="img/education.svg" alt="Picture">
+                                </div> <!-- cd-timeline-img -->
+                                <div class="cd-timeline-content">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <a href="https://sites.google.com/a/mcvs.tp.edu.tw/homepage/" target="_blank">木柵動物園</a>
+                                        </h2>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <h2>
+                                            <span class="subtitle">電子科</span>
+                                        </h2>
+                                    </div>      
+                                    <p>年輕的時候相當愛玩，把精力投身在電玩遊戲上。後來想想，自己也可以念書，放下了玩心，努力了一年。電子電路的基礎讓我之後在arduino的應用上更得心應手。</p>
+                                    <div style="clear:both"></div>
+                                    <span class="cd-date">2002 Sep - 2005 Jun</span>
+                                    <a href="javascript:void(0)" class="cd-read-more">Read more</a>
+                                </div> <!-- cd-timeline-content -->
+                            </div> <!-- cd-timeline-block -->
+                        </section> <!-- cd-timeline -->
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

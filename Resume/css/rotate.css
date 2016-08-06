@@ -1,0 +1,58 @@
+﻿@keyframes spin {
+    0% { transform: translateZ(-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    16% { transform: translateZ(-100px) rotateX(0deg) rotateY(30deg) rotateZ(0deg); }
+    33% { transform: translateZ(-100px) rotateX(0deg) rotateY(60deg) rotateZ(0deg); }
+    50% { transform: translateZ(-100px) rotateX(0deg) rotateY(90deg) rotateZ(0deg); }
+    66% { transform: translateZ(-100px) rotateX(0deg) rotateY(120deg) rotateZ(0deg); }
+    83% { transform: translateZ(-100px) rotateX(0deg) rotateY(150deg) rotateZ(0deg); }
+    100% { transform: translateZ(-100px) rotateX(0deg) rotateY(180deg) rotateZ(0deg); }
+}
+@-webkit-keyframes spin {
+    0% { transform: translateZ(-100px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    16% { transform: translateZ(-100px) rotateX(0deg) rotateY(30deg) rotateZ(0deg); }
+    33% { transform: translateZ(-100px) rotateX(0deg) rotateY(60deg) rotateZ(0deg); }
+    50% { transform: translateZ(-100px) rotateX(0deg) rotateY(90deg) rotateZ(0deg); }
+    66% { transform: translateZ(-100px) rotateX(0deg) rotateY(120deg) rotateZ(0deg); }
+    83% { transform: translateZ(-100px) rotateX(0deg) rotateY(150deg) rotateZ(0deg); }
+    100% { transform: translateZ(-100px) rotateX(0deg) rotateY(180deg) rotateZ(0deg); }
+}
+#wrapper {
+    position: relative;
+    width: 200px;
+    *margin: 0 auto;
+    perspective: 1200px;
+    cursor:pointer;
+}
+#NameCard span {
+    position:absolute;
+    *margin:100px 0 0 100px;
+    display: block;
+    font-size: 2.5em;
+    *padding: 10px;
+}
+#NameCard {
+    position: absolute;
+    width: 300px;
+    *height: 200px;
+    transform-style: preserve-3d;
+    *animation: spin 2s infinite linear;
+    *-webkit-animation: spin 2s linear 2 alternate; /* Chrome, Safari, Opera */ 
+}
+.side {
+    position: absolute;
+    *width: 300px;
+    *height: 200px;
+    background: #fff;
+    *box-shadow:inset 0 0 40px #ccc;
+    *border-radius:20px;
+}
+#NameCard .cover, #dice .inner {
+    background: #e0e0e0;
+    box-shadow: none;
+}
+#NameCard .front  {
+    transform: translateZ(-1px);
+}
+#NameCard .back {
+    transform: rotateY(180deg) translateZ(1px);
+}

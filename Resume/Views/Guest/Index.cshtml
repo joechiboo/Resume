@@ -1,0 +1,53 @@
+﻿
+@helper person(String Name) {
+    <div class="col-md-2">
+        <a href="javascript:void(0)" class="thumbnail">
+            <div class="caption">
+                <h3 class="title">@Name</h3>
+                <p class="note"></p>
+            </div>
+        </a>
+    </div>
+}
+
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-2">
+            第一桌
+        </div>
+        <div class="col-md-10">
+            <div class="row Sortable">
+                @person("1")
+                @person("2")
+                @person("3")
+                @person("4")
+                @person("5")
+                
+                @person("6")
+                @person("7")
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+<script>
+    $(".Sortable ").sortable({
+        items: ".col-md-2:not(.unsortable)",
+        start: function (e, ui) {
+            $(ui.item).attr('data-previndex', ui.item.index());
+        },
+        update: function (e, ui) {
+            //var StepId = $("#StepId").val();
+            //var AttributeID = ui.item.attr("id");
+            var newIndex = ui.item.index(); // 改變後的序號
+            var oldIndex = $(ui.item).attr('data-previndex');
+            $(ui.item).removeAttr('data-previndex');
+
+            //alert(oldIndex);
+            //UpdateSort(StepId, AttributeID, newIndex, oldIndex);
+        }
+    });
+    $(".Sortable").disableSelection();
+</script>
+}   

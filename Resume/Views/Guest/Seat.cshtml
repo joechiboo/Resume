@@ -1,0 +1,105 @@
+﻿@{ 
+    Layout = null;
+    var Seat = ViewBag.Id;
+}
+
+@Seat
+
+
+<table style="display:none">
+    <tr>
+        <th>桌號</th>
+        <th>QrCode</th>
+    </tr>
+
+    <tr id="1LDyES7xXH"><td name="tableId">0</td><td>張文秀</td></tr>
+    <tr id="3eNE4kwF43"><td name="tableId">0</td><td>紀阿公</td></tr>
+    <tr id="D85TAL201y"><td name="tableId">1</td><td>紀伯喬</td></tr>
+    <tr id="FHTxV4LPlR"><td name="tableId">0</td><td>陳姊姊</td></tr>
+    <tr id="PgmgFktetG"><td name="tableId">0</td><td>陳媽媽</td></tr>
+    <tr id="SsdhFd5fpS"><td name="tableId">0</td><td>紀伯寧</td></tr>
+    <tr id="TPYwtmEcSF"><td name="tableId">0</td><td>紀奶奶</td></tr>
+    <tr id="VckvXlAvsB"><td name="tableId">1</td><td>陳玉雯</td></tr>
+    <tr id="Xxua9OBym3"><td name="tableId">0</td><td>紀晴</td></tr>
+    <tr id="aBvy72jSwR"><td name="tableId">0</td><td>陳弟弟</td></tr>
+    <tr id="ujuhQZ7tnF"><td name="tableId">0</td><td>紀式勉</td></tr>
+</table>
+
+<svg height="1200" width="800">
+    <circle id="1" cx="90" cy="90" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="90" y="90" fill="black">1</text>
+
+    <circle id="2" cx="290" cy="90" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="290" y="90" fill="black">2</text>
+
+    <circle id="3" cx="490" cy="90" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="490" y="90" fill="black">3</text>
+
+    <circle id="4" cx="690" cy="90" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="690" y="90" fill="black">4</text>
+
+    <circle id="5" cx="90" cy="290" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="90" y="290" fill="black">5</text>
+
+    <circle id="6" cx="290" cy="290" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="290" y="290" fill="black">6</text>
+
+    <circle id="7" cx="490" cy="290" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="490" y="290" fill="black">7</text>
+
+    <circle id="8" cx="690" cy="290" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="690" y="290" fill="black">8</text>
+
+    <circle id="9" cx="90" cy="490" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="90" y="490" fill="black">9</text>
+
+    <circle id="10" cx="290" cy="490" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="290" y="490" fill="black">10</text>
+
+    <circle id="11" cx="490" cy="490" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="490" y="490" fill="black">11</text>
+
+    <circle id="12" cx="690" cy="490" r="80" stroke="black" stroke-width="3" fill="none" />
+    <text x="690" y="490" fill="black">12</text>
+</svg>
+
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/parse-1.5.0.min.js"></script>
+<script>
+    Parse.initialize("NJuzWf1fOnZpoa1H3xwsyP7Oy3NEQOnU3N28c8Qb", "Lo14aOwY5E7xAlB1tlbXzK48SwHiOJT7XCdNb4yN");
+    $(function () {
+        //GetGuestSeat();
+
+        var GetGuestTableId = GetTableId("@Seat");
+
+        $("#" + GetGuestTableId).attr("fill", "red");
+    });
+
+    function GetTableId(SeatId) {
+        return $("#" + SeatId).find("td[name='tableId']").text().trim();
+    }
+
+    function GetGuestSeat() {
+        var Guests = Parse.Object.extend("Guest");
+        var query = new Parse.Query(Guests);
+        //query.include("Seat");
+        query.include("seat");
+
+        query.each(function (guest) {
+            //console.log(guest.id);
+            var seat = guest.get("seat");
+            //if (seat) {
+            //    console.log(guest);
+            //    console.log(seat);
+            //    console.log(seat.get("table"));
+            //}
+            
+            var table = 0;
+            if (seat) {
+                table = seat.get("table");
+            }
+
+            $("table").append("<tr id='"+ guest.id +"'><td name='tableId'>" + table + "</td><td>" + guest.get("name") + "</td></tr>");
+        });
+    }
+</script>

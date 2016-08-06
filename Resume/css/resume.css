@@ -1,0 +1,29 @@
+﻿@charset "UTF-8";
+
+header .container {
+    height:100vh;
+}
+
+.me {
+        height:30vh;
+}
+
+@media(min-width:768px) {
+    .me {
+        *height:275px;
+    }
+
+    .Remark {
+        display:block;
+    }
+}
+
+@media(max-width:767px) {
+    .me {
+        *height:190px;
+    }
+
+    .Remark {
+        display:none;
+    }
+}

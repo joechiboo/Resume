@@ -1,0 +1,142 @@
+﻿
+@Html.Partial("_Portfolio")
+
+@Html.Partial("_About")
+
+@Html.Partial("_Contact")
+
+@section scripts{
+    @Html.Partial("_Debug")
+    <script>
+        $(function () {
+            $("#justfont-badge").hide();
+
+            $("hr").hover(function () {
+                $(this).addClass("animated shake").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                    $(this).removeClass("animated shake");
+                });
+            });
+
+            $(".skills").on("click", function () {
+                $("#bs-example-navbar-collapse-1").find("a[href='#about']").click();
+            });
+
+            $(".cd-read-more").on("click", function () {
+                $(".close-modal").click();
+                $("#bs-example-navbar-collapse-1").find("a[href='#contact']").click();
+            });
+
+            $("#NameCard").hide();
+
+            $(".carousel").hide();
+            $("#myExercise").show();
+
+            $("#TootlgeNamecard").hover(function () {
+                $("#NameCard").toggle();
+                rotateYDIV(2);  // 2 : 轉一圈
+            }).on("click", function () {
+                rotateYDIV(1); // 1 : 轉半圈
+            });
+
+            $("#LeisureCtrl").find("button").on("click", function () {
+                $(".carousel").hide();
+                $("div[id=" + $(this).attr("title") + "]").show();
+
+                $("#LeisureCtrl").find("button").removeClass("active");
+
+                $("#LeisureCtrl").find("button:not([class*=active])").toggleClass("MidShow")
+
+                $(this).addClass("active");
+            });
+
+            $("#LeisureCtrl").find("button").hover(function () {   
+                $("#LeisureCtrl").find("button").addClass("MidShow");
+            }, function () {
+                $("#LeisureCtrl").find("button:not([class*=active])").removeClass("MidShow")
+            });
+        });
+
+        $(document).keyup(function (e) {
+            //if (e.keyCode == 13) $('.save').click();     // enter
+            if (e.keyCode == 27) {  // esc
+                $(".close-modal").click()
+            }
+
+            if (e.keyCode == 32) {  // space
+                PlayCurrentVideo();
+            }
+        });
+
+        function PlayCurrentVideo() {
+            var CurrentVideoSeq = $("li[data-target='#myExercise'][class='active']").attr("data-slide-to");
+
+            switch (CurrentVideoSeq) {
+                case "0":
+                    PlayOrPause(video1);
+                    break;
+                case "1":
+                    PlayOrPause(video2);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function PlayOrPause(obj) {
+            if (obj.paused) {
+                obj.play();
+            } else {
+                obj.pause();
+            }
+        }
+
+        function DownLoadAPP() {
+            var dialogInstance = BootstrapDialog.show({
+                title: '我還沒有做！',
+                //message: '<div class="form-group">' +
+                //            '<label for="IDNo">請輸入您的身分證字號</label>' +
+                //            '<input type="text" class="form-control" id="IDNo" placeholder="A123456789">' +
+                //            //'<input type="text" class="form-control has-error" id="IDNo" placeholder="A123456789">' +
+                //            '</div>' +
+                //        '<div class="form-group">' +
+                //            '<label for="PhoneNumber">請輸入您的連絡電話</label>' +
+                //            '<input type="text" class="form-control" id="PhoneNumber" placeholder="0987654321">' +
+                //            //'<input type="text" class="form-control has-error" id="PhoneNumber" placeholder="0987654321">' +
+                //        '</div>',
+                buttons: [{
+                    label: '取消',
+                    action: function (dialogRef) {
+                        dialogRef.close();
+                    }
+                }, {
+                    icon: 'glyphicon glyphicon-send',
+                    label: '確認',
+                    cssClass: 'btn-success',
+                    autospin: true,
+                    action: function (dialogRef) {
+                        //AttendLuckyDraw();
+
+                        dialogRef.enableButtons(false);
+                        dialogRef.setClosable(false);
+                        dialogRef.getModalBody().html(
+                            '<div class="progress">' +
+                              '<div class="progress-bar progress-bar-striped progress-bar-success active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">' +
+                                '<span class="sr-only">45% Complete</span>' +
+                              '</div>' +
+                            '</div>');
+
+                        setTimeout(function () {
+                            $(".progress-bar").attr("style", "width: " + 100 + "%");
+                        }, 1500);
+                        setTimeout(function () {
+                            dialogRef.close();
+                        }, 3000);
+                    }
+                }]
+            });
+
+            //dialogInstance.setType(BootstrapDialog.TYPE_SUCCESS);
+            dialogInstance.setType(BootstrapDialog.TYPE_DANGER);
+        }
+    </script>
+}

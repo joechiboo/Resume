@@ -1,0 +1,50 @@
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta property="og:title" content="joechiboo" />
+    <meta property="og:type" content="joechiboo" />
+    <meta property="og:url" content="http://joechiboo.azurewebsites.net/SocialCircle" />
+    <meta property="og:image" content="http://joechiboo.azurewebsites.net/img/logo.png" />
+    <meta property="og:description"
+          content="現代人往往因為太忙碌而沒有時間與人相處，期盼大家可以勇敢的跨出第一步。" />
+    <title>社交圈</title>
+    <link href="~/css/social.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/parse-1.5.0.min.js"></script>
+    <script src="~/Scripts/social.js"></script>
+    <script>
+        document.oncontextmenu = function(){
+            window.event.returnValue=false; //將滑鼠右鍵事件取消
+        }
+    </script>
+</head>
+<body oncontextmenu="return false" onSelectStart="event.returnValue=false">
+    <div class="sitemakers">
+        <div class="wrap" trigger="off">
+            <div class="light">
+                <span class="glow"></span>
+                <span class="flare"></span>
+            </div>
+            <div class="bulb">
+                <svg height="640" width="640">
+                    <circle id="s-bulb" cx="320" cy="380" r="260" stroke="black" stroke-width="3" fill="none" />
+                    <text x="120" y="440" fill="black">社交圈</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="ad">
+        <text>廣告預留區</text>
+        <span>目前點擊數：</span>
+        <span id="count">0</span>
+    </div>
+</body>
+</html>

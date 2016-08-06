@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Joe, Chi-Boo</title>
+
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/freelancer.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-dialog.min.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+</head>
+<body id="page-top" class="index">
+
+    @RenderBody()
+       
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/bootstrap-dialog.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="~/Scripts/jqBootstrapValidation.js"></script>
+    <script src="~/Scripts/contact_me.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Scripts/freelancer.js"></script>
+    <!-- timeline -->
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/modernizr.js"></script>
+
+    @RenderSection("scripts", required: false)    
+</body>
+</html>
