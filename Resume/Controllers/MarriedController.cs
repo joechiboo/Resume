@@ -13,5 +13,15 @@ namespace Resume.Controllers
         {
             return View();
         }
+
+        public ActionResult Back()
+        {
+            return View();
+        }
+
+        public ActionResult WeChat()
+        {
+            return View();
+        }
     }
 }

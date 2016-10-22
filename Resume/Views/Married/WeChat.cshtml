@@ -1,0 +1,128 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>我要結婚了</title>
+    <link href="~/css/weui.css" rel="stylesheet" />
+    <link href="~/css/wechat.css" rel="stylesheet" />
+    <link href="~/img/barrager/barrager.css" rel="stylesheet" />
+</head>
+<body ontouchstart>
+    <div class="weui-toptips weui-toptips_warn js_tooltips">错误提示</div>
+    <div class="container" id="container"></div>
+    <script type="text/html" id="tpl_home">
+        <div class="page">
+            <div class="page__hd">
+                <p class="page__desc">我要結婚了！2017-04-09@@高雄蓮潭會館，歡迎大家來參加</p>
+            </div>
+            <div class="page__bd">
+                <article class="weui-article">
+                    <section>
+                        <p>
+                            <a class="weui-cell weui-cell_access js_item" data-id="index" href="javascript:;">
+                                <img src="/img/wechatui/pic_article.png" alt="" max-width="100%">
+                            </a>
+                        </p>
+                    </section>
+                </article>
+            </div>
+            <div class="page__ft">
+                <p class="weui-footer__links">
+                    @Html.ActionLink("MyResume", "../Home/Index", null, new { @class = "weui-footer__link" })
+                </p>
+                <p class="weui-footer__text">Copyright &copy; @DateTime.Now.Year @@joechiboo</p>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                var winH = $(window).height();
+                var categorySpace = 10;
+
+                $('.js_item').on('click', function () {
+                    var id = $(this).data('id');
+                    window.pageManager.go(id);
+                });
+                $('.js_category').on('click', function () {
+                    var $this = $(this),
+                        $inner = $this.next('.js_categoryInner'),
+                        $page = $this.parents('.page'),
+                        $parent = $(this).parent('li');
+                    var innerH = $inner.data('height');
+                    bear = $page;
+
+                    if (!innerH) {
+                        $inner.css('height', 'auto');
+                        innerH = $inner.height();
+                        $inner.removeAttr('style');
+                        $inner.data('height', innerH);
+                    }
+
+                    if ($parent.hasClass('js_show')) {
+                        $parent.removeClass('js_show');
+                    } else {
+                        $parent.siblings().removeClass('js_show');
+
+                        $parent.addClass('js_show');
+                        if (this.offsetTop + this.offsetHeight + innerH > $page.scrollTop() + winH) {
+                            var scrollTop = this.offsetTop + this.offsetHeight + innerH - winH + categorySpace;
+
+                            if (scrollTop > this.offsetTop) {
+                                scrollTop = this.offsetTop - categorySpace;
+                            }
+
+                            $page.scrollTop(scrollTop);
+                        }
+                    }
+                });
+            });
+        </script>
+    </script>
+    <script type="text/html" id="tpl_index">
+        <div class="page">
+            <div class="page__bd" style="height: 100%;">
+                <div class="weui-tab">
+                    <div class="weui-tab__panel">
+                        1
+                        @*<a href="javascript:;" class="weui-btn weui-btn_primary" id="barrager">页面主操作 Normal</a>*@
+                    </div>
+                    <div class="weui-tabbar">
+                        <a href="javascript:;" class="weui-tabbar__item">
+                            <img src="/img/wechatui/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                            <p class="weui-tabbar__label">首頁</p>
+                        </a>
+                        <a href="javascript:;" class="weui-tabbar__item">
+                            <img src="/img/wechatui/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                            <p class="weui-tabbar__label">寫一段話</p>
+                        </a>
+                        <a href="javascript:;" class="weui-tabbar__item">
+                            <img src="/img/wechatui/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                            <p class="weui-tabbar__label">看一段話</p>
+                        </a>
+                        <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+                            <img src="/img/wechatui/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                            <p class="weui-tabbar__label">聊天</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('.weui-tabbar__item').on('click', function () {
+                    $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+                });
+            });
+        </script>
+    </script>
+    <script src="~/Scripts/zepto.min.js"></script>
+    <script src="~/Scripts/jweixin.js"></script>
+    <script src="~/Scripts/wechat.js"></script>
+    @*<script src="~/Scripts/jquery.js"></script>*@
+    @*<script src="~/Scripts/jquery.barrager.js"></script> <!--彈幕-->*@
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>我要結婚了</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body sroll="no">
+	@RenderBody()
+
+	@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/mobile")    
+	@Scripts.Render("~/bundles/barrager")   <!--彈幕-->
+	@*@Scripts.Render("~/bundles/particles")  <!--Background-->*@
+	@*@Scripts.Render("~/bundles/swipe")      <!--swipe-->*@
+	@RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/chat.js"></script>
+    <script src="~/Scripts/keyboard.js"></script>
+    <script>
+        var chat = $.connection.chatHub;
+        chat.client.broadcastMessage = function (name, message) {
+            //createMessage(name, message);
+
+            $('body').barrager({ 'img': '/css/images/barrager.png', 'info': name + "：" + message });
+        };
+
+        chat.client.toggle = function () {
+            $(".barrage").toggle();
+        };
+
+        chat.client.hide = function () {
+            $.fn.barrager.removeAll();
+        };
+
+        chat.client.refresh = function () {
+            location.reload();
+        };
+
+        chat.client.getUserlist = function (data) {
+            if (data) {
+                var jsondata = $.parseJSON(data);
+                $("#count").text(jsondata.length);
+            }
+        }
+    </script>
+</body>
+</html>

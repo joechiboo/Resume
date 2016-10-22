@@ -1,0 +1,61 @@
+﻿
+<div data-role="page" id="Index" class="page">
+    <div role="main" class="ui-content">
+        <p>我要結婚了！2017-04-09@@高雄蓮潭會館，歡迎大家來參加</p>
+
+        <p>
+            <a href="#Chat">
+                <img src="/img/wechatui/pic_article.png" alt="" width="100%">
+            </a>
+        </p>
+
+        <div class="footer">
+            <p>
+                @Html.ActionLink("MyResume", "../Home/Index", null, new { rel = "external" })
+                目前線上人數：<span id="count">0</span>
+            </p>
+
+            @*<a herf="@Url.Content("/Home/Index")" *data-rel="external" *data-ajax="false">MyResume</a>*@
+            <p>created by &copy; 新人joe&wen</p>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="Chat" class="page">
+
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            //ajaxGet();
+
+            $.connection.hub.start().done(function () {
+                chat.server.getName($('#displayname').html());
+
+                $('#sendmessage').click(function () {
+                    var name = $('#displayname').val();
+                    var message = $('#message').val();
+                    ajaxMessage(message);
+
+                    // Call the Send method on the hub.
+                    chat.server.send(name, message);
+                    // Clear text box and reset focus for next comment.
+                    $('#message').val('').focus();
+                });
+
+                $("#toggle").on("click", function () {
+                    chat.server.toggle();
+                });
+
+                $("#hide").on("click", function () {
+                    chat.server.hide();
+                });
+
+                $("#refresh").on("click", function () {
+                    chat.server.refresh();
+                });
+            });
+        });
+    </script>
+}

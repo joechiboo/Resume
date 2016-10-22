@@ -163,10 +163,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\animate.css" />
+    <Content Include="css\barrager.css" />
     <Content Include="css\bootstrap-dialog.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\married.css" />
+    <Content Include="css\images\ajax-loader.gif" />
+    <Content Include="css\images\barrager.png" />
+    <Content Include="css\close.png" />
+    <Content Include="css\jquery.mobile-1.4.5.css" />
+    <Content Include="css\jquery.mobile-1.4.5.min.css" />
+    <Content Include="css\Site.css" />
+    <Content Include="css\wechat.css" />
     <Content Include="css\freelancer.css" />
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\rotate.css" />
@@ -192,6 +199,7 @@
     <Content Include="img\arduino\deathhand.mp4" />
     <Content Include="img\arduino\modafinish.mp4" />
     <Content Include="img\arduino\設計圖.jpg" />
+    <Content Include="img\barrager\barrager.css" />
     <Content Include="img\drawsomething\mother.jpg" />
     <Content Include="img\drawsomething\partice-10.png" />
     <Content Include="img\drawsomething\partice-3.png" />
@@ -245,16 +253,23 @@
     <Content Include="img\portfolio\籃球.png" />
     <Content Include="img\seat.svg" />
     <Content Include="img\tank.svg" />
+    <Content Include="img\wechatui\icon_tabbar.png" />
     <Content Include="img\wechatui\pic_article.png" />
     <Content Include="Scripts\bootstrap-dialog.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cbpAnimatedHeader.js" />
     <Content Include="Scripts\cbpAnimatedHeader.min.js" />
+    <Content Include="Scripts\chat.js" />
     <Content Include="Scripts\classie.js" />
     <Content Include="Scripts\contact_me.js" />
+    <Content Include="Scripts\jquery.barrager.js" />
+    <Content Include="Scripts\jquery.barrager.min.js" />
+    <Content Include="Scripts\jquery.mobile-1.4.5.js" />
+    <Content Include="Scripts\jquery.mobile-1.4.5.min.js" />
     <Content Include="Scripts\jweixin.js" />
-    <Content Include="Scripts\married.js" />
+    <Content Include="Scripts\keyboard.js" />
+    <Content Include="Scripts\wechat.js" />
     <Content Include="Scripts\freelancer.js" />
     <Content Include="Scripts\jqBootstrapValidation.js" />
     <Content Include="Scripts\jquery-ui.js" />
@@ -284,6 +299,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="css\images\icons-png\" />
+    <Folder Include="css\images\icons-svg\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -314,7 +331,13 @@
     <Content Include="Views\Guest\_Layout.cshtml" />
     <Content Include="Views\Guest\_ViewStart.cshtml" />
     <Content Include="Views\Home\_Debug.cshtml" />
+    <Content Include="Views\Married\WeChat.cshtml" />
     <Content Include="Views\Married\Index.cshtml" />
+    <Content Include="Views\Married\_Footer.cshtml" />
+    <Content Include="Views\Married\_Header.cshtml" />
+    <Content Include="Views\Married\_Layout.cshtml" />
+    <Content Include="Views\Married\_ViewStart.cshtml" />
+    <Content Include="Views\Married\Back.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
