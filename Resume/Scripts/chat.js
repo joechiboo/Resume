@@ -12,14 +12,14 @@
 function ajaxMessage(message) {
     var name = $("#displayname").val();
 
-    $.post(
-        "api/Chat",
-        {
-            Name: name,
-            Message: message
-        },
-        function (data) {
-            //alert('succeed');
-        }
-    )
+    //$.post(
+    //    "api/Chat",
+    //    {
+    //        Name: name,
+    //        Message: message
+    //    },
+    //    function (data) {
+    //        //alert('succeed');
+    //    }
+    //)
 }

@@ -8,21 +8,17 @@
                 <img src="/img/wechatui/pic_article.png" alt="" width="100%">
             </a>
         </p>
-
-        <div class="footer">
-            <p>
-                @Html.ActionLink("MyResume", "../Home/Index", null, new { rel = "external" })
-                目前線上人數：<span id="count">0</span>
-            </p>
-
-            @*<a herf="@Url.Content("/Home/Index")" *data-rel="external" *data-ajax="false">MyResume</a>*@
-            <p>created by &copy; 新人joe&wen</p>
-        </div>
     </div>
+
+    @Html.Partial("_Footer")
 </div>
 
 <div data-role="page" id="Chat" class="page">
+    @Html.Partial("_Header")
 
+    @Html.Partial("_Chat")
+
+    @Html.Partial("_Navbar")
 </div>
 
 @section scripts{

@@ -338,6 +338,8 @@
     <Content Include="Views\Married\_Layout.cshtml" />
     <Content Include="Views\Married\_ViewStart.cshtml" />
     <Content Include="Views\Married\Back.cshtml" />
+    <Content Include="Views\Married\_Navbar.cshtml" />
+    <Content Include="Views\Married\_Chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />

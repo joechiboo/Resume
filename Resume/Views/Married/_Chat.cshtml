@@ -1,23 +1,17 @@
 ﻿
 
 <div role="main" class="ui-content">
-    <input type="button" id="toggle" value="Toggle" />
-    <input type="button" id="hide" value="Hide" />
-    <input type="button" id="refresh" value="Refresh" />
-    <input type="hidden" id="displayname" />
-    目前線上人數：<span id="count">0</span>
-    <ul id="discussion"></ul>
-    <hr />
-
     <div id="chatbox">
         <input type="text" id="message" />
         <input type="button" id="sendmessage" value="Send" />
     </div>
 </div>
 
-@section scripts{    
+@section scripts{
     <script>
         $(function () {
+            //ajaxGet();
+
             $.connection.hub.start().done(function () {
                 chat.server.getName($('#displayname').html());
 
@@ -28,18 +22,6 @@
 
                     chat.server.send(name, message);
                     $('#message').val('').focus();
-                });
-
-                $("#toggle").on("click", function () {
-                    chat.server.toggle();
-                });
-
-                $("#hide").on("click", function () {
-                    chat.server.hide();
-                });
-
-                $("#refresh").on("click", function () {
-                    chat.server.refresh();
                 });
             });
         });
