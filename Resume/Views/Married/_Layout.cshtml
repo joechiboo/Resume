@@ -23,10 +23,26 @@
     <script>
         var chat = $.connection.chatHub;
         chat.client.broadcastMessage = function (name, message) {
-            //createMessage(name, message);
+            createMessage(name, message);
 
             $('body').barrager({ 'img': '/css/images/barrager.png', 'info': name + "：" + message });
         };
+
+        $.connection.hub.start().done(function () {
+            chat.server.getName($('#displayname').html());
+
+            $('#sendmessage').click(function () {
+                var name = $('#displayname').val();
+                var message = $('#message').val();
+
+                if (message.trim() != "") {
+                    ajaxMessage(message);
+                    chat.server.send(name, message);
+
+                    $('#message').val('').focus();
+                }
+            });
+        });
 
         chat.client.toggle = function () {
             $(".barrage").toggle();

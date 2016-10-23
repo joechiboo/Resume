@@ -4,7 +4,7 @@
     <input type="button" id="toggle" value="Toggle" />
     <input type="button" id="hide" value="Hide" />
     <input type="button" id="refresh" value="Refresh" />
-    <input type="hidden" id="displayname" />
+    <input type="hidden" id="displayname" value="新郎" />
     目前線上人數：<span id="count">0</span>
     <ul id="discussion"></ul>
     <hr />
@@ -19,17 +19,6 @@
     <script>
         $(function () {
             $.connection.hub.start().done(function () {
-                chat.server.getName($('#displayname').html());
-
-                $('#sendmessage').click(function () {
-                    var name = $('#displayname').val();
-                    var message = $('#message').val();
-                    ajaxMessage(message);
-
-                    chat.server.send(name, message);
-                    $('#message').val('').focus();
-                });
-
                 $("#toggle").on("click", function () {
                     chat.server.toggle();
                 });

@@ -24,34 +24,7 @@
 @section scripts{
     <script>
         $(function () {
-            //ajaxGet();
-
-            $.connection.hub.start().done(function () {
-                chat.server.getName($('#displayname').html());
-
-                $('#sendmessage').click(function () {
-                    var name = $('#displayname').val();
-                    var message = $('#message').val();
-                    ajaxMessage(message);
-
-                    // Call the Send method on the hub.
-                    chat.server.send(name, message);
-                    // Clear text box and reset focus for next comment.
-                    $('#message').val('').focus();
-                });
-
-                $("#toggle").on("click", function () {
-                    chat.server.toggle();
-                });
-
-                $("#hide").on("click", function () {
-                    chat.server.hide();
-                });
-
-                $("#refresh").on("click", function () {
-                    chat.server.refresh();
-                });
-            });
+           
         });
     </script>
 }
