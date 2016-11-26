@@ -1,7 +1,12 @@
-﻿<div class="footer">
-    <p>
-        @Html.ActionLink("MyResume", "../Home/Index", null, new { rel = "external" })
-        目前線上人數：<span id="count">0</span>
-    </p>
+﻿@model bool
+
+<div class="footer">
+    @if (Model)
+    {
+        <p>
+            @Html.ActionLink("MyResume", "../Home/Index", null, new { rel = "external" })
+            目前線上人數：<span id="count">0</span>
+        </p>
+    }
     <p>created by &copy; 新人joe&wen</p>
 </div>

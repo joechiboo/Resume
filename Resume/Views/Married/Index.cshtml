@@ -4,13 +4,47 @@
         <p>我要結婚了！2017-04-09@@高雄蓮潭會館，歡迎大家來參加</p>
 
         <p>
-            <a href="#Chat">
-                <img src="/img/wechatui/pic_article.png" alt="" width="100%">
+            <a href="#Login">
+                @*<img src="/img/wechatui/pic_article.png" alt="" width="100%">*@
+                <img src="~/img/married/120161120211917_1852.jpg" alt="" width="100%" />
             </a>
         </p>
     </div>
 
-    @Html.Partial("_Footer")
+    @Html.Partial("_Footer", true)
+</div>
+
+
+<div data-role="page" id="Login" class="page">
+    @Html.Partial("_Header")
+
+    <div role="main" class="ui-content">
+        Dear 親,<br/>
+        用中文姓名當作帳號，所以請不要打錯，或打措號，會導致對應不到的問題
+        <input type="text" placeholder="您的中文姓名" />
+
+        <a href="#Info">
+            <input type="button" value="下一步" />
+        </a>
+    </div>
+
+    @Html.Partial("_Footer", false)
+</div>
+
+<div data-role="page" id="Info" class="page">
+    @Html.Partial("_Header")
+
+    <div role="main" class="ui-content">
+        <input type="text" placeholder="aaa" />
+        <input type="text" placeholder="bbb" />
+        <input type="text" placeholder="ccc" />
+
+        <a href="#Chat">
+            <input type="button" value="更新" />
+        </a>
+    </div>
+
+    @Html.Partial("_Footer", false)
 </div>
 
 <div data-role="page" id="Chat" class="page">
@@ -21,10 +55,19 @@
     @Html.Partial("_Navbar")
 </div>
 
+
+<div data-role="page" id="Seat" class="page">
+    @Html.Partial("_Header")
+
+    Coming Soon
+
+    @Html.Partial("_Navbar")
+</div>
+
 @section scripts{
     <script>
         $(function () {
-           
+
         });
     </script>
 }

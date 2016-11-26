@@ -1,0 +1,10 @@
+把/ぃ把	bit
+╧よ/よ克ね	bit
+计(0-10)	int
+ㄠ担畒慈(0-2)	int
+碭(0-10)	int
+		nvarchar
+ノぺ	nvarchar
+璹祘蔼臟	nvarchar
+
+
