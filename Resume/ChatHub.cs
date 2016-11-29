@@ -6,6 +6,8 @@ using Microsoft.AspNet.SignalR;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using Resume.Service;
+using Resume.Models;
 
 namespace Resume
 {
@@ -19,6 +21,9 @@ namespace Resume
     public class ChatHub : Hub
     {
         public static List<UserInfo> UserList = new List<UserInfo>();
+
+        private DeviceService _device = new DeviceService();
+        private MemberService _member = new MemberService();
 
         public override Task OnConnected()
         {
@@ -44,17 +49,23 @@ namespace Resume
             return UserList.SingleOrDefault(p => p.ContextID == id);
         }
 
-        public void GetName(string name)
+        public void GetName(int id)
         {
             // 查詢用戶
             var user = _GetUser(Context.ConnectionId);
             if (user != null)
             {
-                user.Name = name;
+                user.Name = id.ToString();
                 Clients.Client(Context.ConnectionId).showID(Context.ConnectionId);
+                
+                _device.AddDevice(new Device
+                {
+                    memberid = id,
+                    sessionid = Context.ConnectionId
+                });
             }
 
-            GetUserList();
+            //GetUserList();
         }
 
         private void GetUserList()

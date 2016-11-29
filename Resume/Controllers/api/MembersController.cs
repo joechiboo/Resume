@@ -10,6 +10,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Resume.DAL;
 using Resume.Models;
+using Resume.Service;
+using System.Web;
 
 namespace Resume.Controllers.api
 {
@@ -64,7 +66,7 @@ namespace Resume.Controllers.api
 
                 _member = _GetMember(member.Name);
             }
-
+            
             return Ok(_member.id);
         }
 

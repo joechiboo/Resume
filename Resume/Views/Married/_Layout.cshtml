@@ -9,8 +9,6 @@
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body sroll="no">
-    @HttpContext.Current.Session.SessionID
-
 	@RenderBody()
 
     @Scripts.Render("~/bundles/mobile")    
@@ -31,8 +29,6 @@
         };
 
         $.connection.hub.start().done(function () {
-            chat.server.getName($('#displayname').html());
-
             $('#sendmessage').click(function () {
                 var name = $('#displayname').val();
                 var message = $('#message').val();
@@ -43,6 +39,11 @@
 
                     $('#message').val('').focus();
                 }
+            });
+
+            $("#updateForm").on("click", function () {
+                var id = $('#memberid').val();
+                chat.server.getName(id);
             });
         });
 

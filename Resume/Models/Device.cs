@@ -9,6 +9,6 @@ namespace Resume.Models
     {
         public int id { get; set; }
         public int memberid { get; set; }
-        public int sessionid { get; set; }
+        public string sessionid { get; set; }
     }
 }
