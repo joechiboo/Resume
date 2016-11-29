@@ -6,11 +6,13 @@
 	<title>我要結婚了</title>
 	@Styles.Render("~/Content/css")
 	@Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body sroll="no">
+    @HttpContext.Current.Session.SessionID
+
 	@RenderBody()
 
-	@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/mobile")    
 	@Scripts.Render("~/bundles/barrager")   <!--彈幕-->
 	@*@Scripts.Render("~/bundles/particles")  <!--Background-->*@

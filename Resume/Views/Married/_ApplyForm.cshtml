@@ -1,0 +1,54 @@
+﻿<div role="main" class="ui-content">
+
+    <fieldset id="join" data-role="controlgroup" data-type="horizontal" data-mini="true">
+        <input type="radio" name="radio-choice-a" id="radio-choice-a" value="accept" checked="checked">
+        <label for="radio-choice-a">參加</label>
+        <input type="radio" name="radio-choice-a" id="radio-choice-b" value="cancel">
+        <label for="radio-choice-b">不克參加</label>
+    </fieldset>
+
+    <fieldset id="side" data-role="controlgroup" data-type="horizontal" data-mini="true">
+        <input type="radio" name="radio-choice-b" id="radio-choice-c" value="joe" checked="checked">
+        <label for="radio-choice-c">男方親友</label>
+        <input type="radio" name="radio-choice-b" id="radio-choice-d" value="wen">
+        <label for="radio-choice-d">女方親友</label>
+    </fieldset>
+
+    <label for="number">人數</label>
+    <input type="range" name="number" id="number" value="1" min="0" max="10">
+
+    <label for="children">兒童座椅</label>
+    <input type="range" name="children" id="children" value="0" min="0" max="2">
+
+    <label for="vegetable">素食</label>
+    <input type="range" name="vegetable" id="vegetable" value="0" min="0" max="10">
+
+    <a href="#Chat">
+        <input type="button" value="更新" />
+    </a>
+</div>
+
+<script>
+    $(function () {
+
+        $("input[type='radio']").on("click", function () {
+            var value = $(this).val();
+
+            //console.log(value);
+
+            switch (value) {
+                case "accept":
+                    $("#number").val(1).change();
+                    break;
+                case "cancel":
+                    $("#number").val(0).change();
+                    $("#children").val(0).change();
+                    $("#vegetable").val(0).change();
+                    break;
+                default:
+                    break;
+            }
+
+        });
+    });
+</script>

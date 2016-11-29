@@ -21,16 +21,16 @@ function createMessage(name, message) {
 }
 
 function ajaxMessage(message) {
-    var name = $("#displayname").val();
+    var id = $("#memberid").val();
 
-    //$.post(
-    //    "api/Chat",
-    //    {
-    //        Name: name,
-    //        Message: message
-    //    },
-    //    function (data) {
-    //        //alert('succeed');
-    //    }
-    //)
+    $.post(
+        "api/Chat",
+        {
+            memberid: id,
+            message: message
+        },
+        function (data) {
+            //alert('succeed');
+        }
+    )
 }

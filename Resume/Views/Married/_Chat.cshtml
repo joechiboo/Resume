@@ -2,25 +2,18 @@
 
 <div role="main" class="ui-content">
     <div id="chatbox">
+        <input type="hidden" id="memberid" value="" />
         <input type="hidden" id="displayname" value="" />
         <input type="text" id="message" placeholder="我有話要說" />
         
-        <input type="button" id="sendmessage" value="Send" />
+        <input type="button" id="sendmessage" value="送出" />
     </div>
 
     <ul data-role="listview" data-inset="true" id="chatlog">
-        <li data-icon="delete"><a href="#">1</a></li>
+        @*<li data-icon="delete"><a href="#">1</a></li>
         <li data-icon="delete"><a href="#">2</a></li>
         <li data-icon="delete"><a href="#">3</a></li>
         <li data-icon="delete"><a href="#">4</a></li>
-        <li data-icon="delete"><a href="#">5</a></li>
+        <li data-icon="delete"><a href="#">5</a></li>*@
     </ul>
 </div>
-
-@section scripts{
-    <script>
-        $(function () {
-            //ajaxGet();
-        });
-    </script>
-}
