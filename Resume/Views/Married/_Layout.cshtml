@@ -28,7 +28,9 @@
             $('body').barrager({ 'img': '/css/images/barrager.png', 'info': name + "：" + message });
         };
 
-        $.connection.hub.start().done(function () {
+        $.connection.hub.start().done(function () {           
+            chat.server.getUserList();
+
             $('#sendmessage').click(function () {
                 var name = $('#displayname').val();
                 var message = $('#message').val();

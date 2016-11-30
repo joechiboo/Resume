@@ -65,10 +65,10 @@ namespace Resume
                 });
             }
 
-            //GetUserList();
+            GetUserList();
         }
 
-        private void GetUserList()
+        public void GetUserList()
         {
             var item = from a in UserList
                        select new { a.Name, a.ContextID };

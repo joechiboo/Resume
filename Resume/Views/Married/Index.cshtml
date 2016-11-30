@@ -31,19 +31,34 @@
     @Html.Partial("_Footer", false)
 </div>
 
-<div data-role="page" id="Chat" class="page">
-    @Html.Partial("_Header")
-
-    @Html.Partial("_Chat")
-
-    @Html.Partial("_Navbar")
-</div>
-
-
 <div data-role="page" id="Seat" class="page">
     @Html.Partial("_Header")
 
     Coming Soon
 
-    @Html.Partial("_Navbar")
+    @Html.Partial("_Navbar", "Seat")
+</div>
+
+<div data-role="page" id="Write" class="page">
+    @Html.Partial("_Header")
+
+    Coming Soon
+
+    @Html.Partial("_Navbar", "Write")
+</div>
+
+<div data-role="page" id="Read" class="page">
+    @Html.Partial("_Header")
+
+    Coming Soon
+
+    @Html.Partial("_Navbar", "Read")
+</div>
+
+<div data-role="page" id="Chat" class="page">
+    @Html.Partial("_Header")
+
+    @Html.Partial("_Chat")
+
+    @Html.Partial("_Navbar", "Chat")
 </div>
