@@ -4,7 +4,7 @@
 兒童座椅(0-2)	int
 素食幾人(0-10)	int
 地址		nvarchar
-租用台北大巴	nvarchar
-代訂回程高鐵	nvarchar
+租用台北大巴	bit
+代訂回程高鐵	bit
 
 

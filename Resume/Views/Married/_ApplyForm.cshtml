@@ -23,7 +23,7 @@
     <label for="vegetable">素食</label>
     <input type="range" name="vegetable" id="vegetable" value="0" min="0" max="10">
 
-    <a href="#Chat">
+    <a href="#Detail">
         <input type="button" value="更新" id="updateForm" />
     </a>
 </div>
@@ -38,9 +38,11 @@
 
             switch (value) {
                 case "accept":
+                    $("#updateForm").closest("a").attr("href", "#Detail");
                     $("#number").val(1).change();
                     break;
                 case "cancel":
+                    $("#updateForm").closest("a").attr("href", "#Chat");
                     $("#number").val(0).change();
                     $("#children").val(0).change();
                     $("#vegetable").val(0).change();

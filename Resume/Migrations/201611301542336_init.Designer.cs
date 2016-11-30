@@ -13,7 +13,7 @@ namespace Resume.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611271417125_init"; }
+            get { return "201611301542336_init"; }
         }
         
         string IMigrationMetadata.Source

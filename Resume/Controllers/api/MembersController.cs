@@ -61,6 +61,8 @@ namespace Resume.Controllers.api
 
             if (_member == null)
             {
+                member.Hash = Guid.NewGuid();
+
                 db.Members.Add(member);
                 db.SaveChanges();
 

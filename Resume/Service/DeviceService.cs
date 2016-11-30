@@ -16,7 +16,7 @@ namespace Resume.Service
 
             if (model != null)
             {
-
+                model.memberid = entity.memberid;
             }
             else {
                 db.Devices.Add(entity);
