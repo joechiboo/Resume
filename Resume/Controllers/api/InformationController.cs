@@ -1,30 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Resume.DAL;
 using Resume.Models;
+using System.Linq;
+using System;
 
 namespace Resume.Controllers.api
 {
     public class InformationController : ApiController
     {
         private MarriedContext db = new MarriedContext();
-        
+
         // GET: api/Information/5
         [ResponseType(typeof(Information))]
-        public IHttpActionResult GetInformation(int id)
+        public IHttpActionResult GetInformation(Guid id)
         {
             Information information = db.Infomations.Find(id);
             if (information == null)
             {
-                return NotFound();
+                return Ok("");
             }
 
             return Ok(information);
@@ -38,8 +35,8 @@ namespace Resume.Controllers.api
             {
                 return BadRequest(ModelState);
             }
+
             
-            db.Entry(information).State = EntityState.Modified;
 
             try
             {
@@ -62,12 +59,25 @@ namespace Resume.Controllers.api
                 return BadRequest(ModelState);
             }
 
-            db.Infomations.Add(information);
+            if (_isExist(information.memberid))
+            {
+                db.Entry(information).State = EntityState.Modified;
+            }
+            else {
+                db.Infomations.Add(information);
+            }
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = information.hash }, information);
         }
-        
+
+        private bool _isExist(int memberid)
+        {
+            Information information = db.Infomations.Where(p => p.memberid == memberid).FirstOrDefault();
+
+            return information != null;
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

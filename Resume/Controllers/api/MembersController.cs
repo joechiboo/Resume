@@ -20,9 +20,9 @@ namespace Resume.Controllers.api
         private MarriedContext db = new MarriedContext();
 
         // GET: api/Members
-        public IQueryable<Member> GetMembers()
+        public IQueryable<String> GetMembers()
         {
-            return db.Members;
+            return db.Members.Select(p=>p.Name);
         }
 
         // GET: api/Members/5
@@ -34,6 +34,8 @@ namespace Resume.Controllers.api
             {
                 return NotFound();
             }
+
+            member.Hash = Guid.Empty;   // hide
 
             return Ok(member);
         }
@@ -69,7 +71,7 @@ namespace Resume.Controllers.api
                 _member = _GetMember(member.Name);
             }
             
-            return Ok(_member.id);
+            return Ok(_member);
         }
 
         protected override void Dispose(bool disposing)

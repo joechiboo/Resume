@@ -18,11 +18,39 @@
                 {
                     Name: name
                 },
-                function (id) {
-                    $("#memberid").val(id);
+                function (member) {
+                    logining();
+
+                    $("#memberid").val(member.id);
+                    $("#memberhash").val(member.Hash);
                     $("#displayname").val(name);
+
+                    $.get("api/Information/" + member.Hash, null, function (info) {
+                        //join
+                        $("#side").find("label[value='"+ info.side +"']").click();
+                        //number
+                        //children
+                        //vegetable
+
+                        logined();
+                    });
+                    
                 }
             )
         });
     });
+
+    function logining() {
+        $.mobile.loading('show', {
+            text: '登入中...',
+            textVisible: true,
+            theme: 'a',
+            textonly: false,
+            html: ""
+        });
+    }
+
+    function logined() {
+        $.mobile.loading('hide');
+    }
 </script>

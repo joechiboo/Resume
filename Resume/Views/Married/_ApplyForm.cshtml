@@ -8,10 +8,10 @@
     </fieldset>
 
     <fieldset id="side" data-role="controlgroup" data-type="horizontal" data-mini="true">
-        <input type="radio" name="radio-choice-b" id="radio-choice-c" value="joe" checked="checked">
-        <label for="radio-choice-c">男方親友</label>
-        <input type="radio" name="radio-choice-b" id="radio-choice-d" value="wen">
-        <label for="radio-choice-d">女方親友</label>
+        <input type="radio" name="radio-choice-b" id="radio-choice-c" value="false" checked="checked">
+        <label for="radio-choice-c" value="false">男方親友</label>
+        <input type="radio" name="radio-choice-b" id="radio-choice-d" value="true">
+        <label for="radio-choice-d" value="true">女方親友</label>
     </fieldset>
 
     <label for="number">人數</label>
@@ -51,6 +51,21 @@
                     break;
             }
 
+        });
+
+        $("#updateForm").on("click", function () {
+            var id = $('#memberid').val();
+            
+            //$.post(
+            //    "api/Members",
+            //    {
+            //        Name: name
+            //    },
+            //    function (id) {
+            //        $("#memberid").val(id);
+            //        $("#displayname").val(name);
+            //    }
+            //)
         });
     });
 </script>
