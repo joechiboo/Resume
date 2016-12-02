@@ -7,8 +7,9 @@ redirect
 
 form get/half
 
-form save
+form save/half
+
+detail_layout
 
 form update
 
-detail_layout

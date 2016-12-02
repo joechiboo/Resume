@@ -1,16 +1,16 @@
 ﻿<div role="main" class="ui-content">
 
     <fieldset id="join" data-role="controlgroup" data-type="horizontal" data-mini="true">
-        <input type="radio" name="radio-choice-a" id="radio-choice-a" value="accept" checked="checked">
-        <label for="radio-choice-a">參加</label>
-        <input type="radio" name="radio-choice-a" id="radio-choice-b" value="cancel">
-        <label for="radio-choice-b">不克參加</label>
+        <input type="radio" name="join" id="radio-choice-a" value="true" checked="checked">
+        <label for="radio-choice-a" value="true">參加</label>
+        <input type="radio" name="join" id="radio-choice-b" value="false">
+        <label for="radio-choice-b" value="false">不克參加</label>
     </fieldset>
 
     <fieldset id="side" data-role="controlgroup" data-type="horizontal" data-mini="true">
-        <input type="radio" name="radio-choice-b" id="radio-choice-c" value="false" checked="checked">
+        <input type="radio" name="side" id="radio-choice-c" value="false" checked="checked">
         <label for="radio-choice-c" value="false">男方親友</label>
-        <input type="radio" name="radio-choice-b" id="radio-choice-d" value="true">
+        <input type="radio" name="side" id="radio-choice-d" value="true">
         <label for="radio-choice-d" value="true">女方親友</label>
     </fieldset>
 
@@ -53,19 +53,22 @@
 
         });
 
-        $("#updateForm").on("click", function () {
-            var id = $('#memberid').val();
-            
-            //$.post(
-            //    "api/Members",
-            //    {
-            //        Name: name
-            //    },
-            //    function (id) {
-            //        $("#memberid").val(id);
-            //        $("#displayname").val(name);
-            //    }
-            //)
+        $("#updateForm").on("click", function () {            
+            $.post(
+                "api/Information",
+                {
+                    hash: $("#memberhash").val(),
+                    memberid: $("#memberid").val(),
+                    accept: $("#join").find("input[name='join']").val(),
+                    side: $("#side").find("input[name='side']").val(),
+                    number: $("#number").val(),
+                    children: $("#children").val(),
+                    vegetable: $("#vegetable").val()
+                },
+                function (result) {
+
+                }
+            )
         });
     });
 </script>

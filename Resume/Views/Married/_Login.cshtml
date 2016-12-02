@@ -26,12 +26,12 @@
                     $("#displayname").val(name);
 
                     $.get("api/Information/" + member.Hash, null, function (info) {
-                        //join
+                        $("#join").find("label[value='" + info.accept + "']").click();
                         $("#side").find("label[value='"+ info.side +"']").click();
-                        //number
-                        //children
-                        //vegetable
-
+                        $("#number").val(info.number).slider("refresh");
+                        $("#children").val(info.children).slider("refresh");
+                        $("#vegetable").val(info.vegetable).slider("refresh");
+                         
                         logined();
                     });
                     

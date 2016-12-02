@@ -27,38 +27,10 @@ namespace Resume.Controllers.api
             return Ok(information);
         }
 
-        // PUT: api/Information/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutInformation(int id, Information information)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
         // POST: api/Information
         [ResponseType(typeof(Information))]
         public IHttpActionResult PostInformation(Information information)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             if (_isExist(information.memberid))
             {
                 db.Entry(information).State = EntityState.Modified;
@@ -68,7 +40,7 @@ namespace Resume.Controllers.api
             }
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = information.hash }, information);
+            return Ok();
         }
 
         private bool _isExist(int memberid)
