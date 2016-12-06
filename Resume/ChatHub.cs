@@ -21,8 +21,7 @@ namespace Resume
     public class ChatHub : Hub
     {
         public static List<UserInfo> UserList = new List<UserInfo>();
-
-        private DeviceService _device = new DeviceService();
+        
         private MemberService _member = new MemberService();
 
         public override Task OnConnected()
@@ -57,12 +56,6 @@ namespace Resume
             {
                 user.Name = id.ToString();
                 Clients.Client(Context.ConnectionId).showID(Context.ConnectionId);
-                
-                _device.AddDevice(new Device
-                {
-                    memberid = id,
-                    sessionid = Context.ConnectionId
-                });
             }
 
             GetUserList();

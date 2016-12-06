@@ -70,7 +70,9 @@ namespace Resume.Controllers.api
 
                 _member = _GetMember(member.Name);
             }
-            
+
+            db.SaveChanges();
+
             return Ok(_member);
         }
 

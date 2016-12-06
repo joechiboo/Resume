@@ -27,5 +27,8 @@ namespace Resume.Models
         public bool bus { get; set; }
 
         public bool HSR { get; set; }
+
+        public string write { get; set; }
+        public string read { get; set; }
     }
 }

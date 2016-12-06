@@ -33,6 +33,7 @@ namespace Resume.Controllers.api
         {
             if (_isExist(information.memberid))
             {
+                // 有問題
                 db.Entry(information).State = EntityState.Modified;
             }
             else {

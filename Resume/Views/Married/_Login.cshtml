@@ -3,6 +3,10 @@
     用中文姓名當作帳號，所以請不要打錯，或打措號，會導致對應不到的問題
     <input type="text" id="loginName" placeholder="您的中文姓名" />
 
+    <input type="hidden" id="memberid" />
+    <input type="hidden" id="memberhash" />
+    <input type="text" id="sessionid" value="@Context.Session.SessionID.ToString()" />
+
     <a href="#Info">
         <input type="button" id="loginBtn" value="下一步" />
     </a>
@@ -12,11 +16,13 @@
     $(function () {
         $("#loginBtn").on("click", function () {
             var name = $("#loginName").val();
+            var sessionid = $("#sessionid").val();
 
             $.post(
                 "api/Members",
                 {
-                    Name: name
+                    Name: name,
+                    SessionID: sessionid
                 },
                 function (member) {
                     logining();
@@ -31,7 +37,13 @@
                         $("#number").val(info.number).slider("refresh");
                         $("#children").val(info.children).slider("refresh");
                         $("#vegetable").val(info.vegetable).slider("refresh");
-                         
+
+                        //address
+                        //bus
+                        //HSR
+                        //write
+                        //read
+                        
                         logined();
                     });
                     

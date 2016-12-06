@@ -10,5 +10,7 @@ namespace Resume.Models
         public int id { get; set; }
         public string Name { get; set; }
         public Guid Hash { get; set; }    // relation information
+
+        public string SessionID { get; set; }   // template Device session
     }
 }
