@@ -288,6 +288,7 @@
     <Content Include="img\portfolio\學士帽.png" />
     <Content Include="img\portfolio\文件夾.png" />
     <Content Include="img\portfolio\籃球.png" />
+    <Content Include="img\QR.bmp" />
     <Content Include="img\seat.svg" />
     <Content Include="img\tank.svg" />
     <Content Include="img\wechatui\icon_tabbar.png" />
@@ -379,6 +380,7 @@
     <Content Include="Views\Married\_ApplyForm.cshtml" />
     <Content Include="Views\Married\_Login.cshtml" />
     <Content Include="Views\Married\_Detail.cshtml" />
+    <Content Include="Views\Home\_WeChat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
