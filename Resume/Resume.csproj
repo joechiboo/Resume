@@ -207,6 +207,7 @@
     <Content Include="css\close.png" />
     <Content Include="css\jquery.mobile-1.4.5.css" />
     <Content Include="css\jquery.mobile-1.4.5.min.css" />
+    <Content Include="css\rwd.css" />
     <Content Include="css\Site.css" />
     <Content Include="css\wechat.css" />
     <Content Include="css\freelancer.css" />

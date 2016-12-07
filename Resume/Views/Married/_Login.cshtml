@@ -5,7 +5,7 @@
 
     <input type="hidden" id="memberid" />
     <input type="hidden" id="memberhash" />
-    <input type="text" id="sessionid" value="@Context.Session.SessionID.ToString()" />
+    <input type="text" id="sessionid" value="@User.Identity.Name" />
 
     <a href="#Info">
         <input type="button" id="loginBtn" value="下一步" />
