@@ -1,0 +1,10 @@
+﻿#Index img {
+    width:50%;
+}
+
+@media screen and (max-width:678px) {
+	#Index img {
+        width:90%;
+        max-width:90%;
+    }
+}
