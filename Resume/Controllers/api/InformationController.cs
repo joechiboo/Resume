@@ -31,10 +31,24 @@ namespace Resume.Controllers.api
         [ResponseType(typeof(Information))]
         public IHttpActionResult PostInformation(Information information)
         {
-            if (_isExist(information.memberid))
+            if (_isExist(information.hash))
             {
-                // 有問題
-                db.Entry(information).State = EntityState.Modified;
+                var info = db.Infomations.Where(p => p.hash == information.hash).FirstOrDefault();
+
+                if (information.address == null)
+                {
+                    info.accept = information.accept;
+                    info.side = information.side;
+                    info.number = information.number;
+                    info.children = information.children;
+                    info.vegetable = information.vegetable;
+                }
+                else {
+                    info.address = information.address;
+                    info.bus = information.bus;
+                    info.HSR = information.HSR;
+                    info.write = information.write;
+                }
             }
             else {
                 db.Infomations.Add(information);
@@ -44,9 +58,9 @@ namespace Resume.Controllers.api
             return Ok();
         }
 
-        private bool _isExist(int memberid)
+        private bool _isExist(Guid memberhash)
         {
-            Information information = db.Infomations.Where(p => p.memberid == memberid).FirstOrDefault();
+            Information information = db.Infomations.Where(p => p.hash == memberhash).FirstOrDefault();
 
             return information != null;
         }

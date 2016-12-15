@@ -5,7 +5,7 @@
 
     <input type="hidden" id="memberid" />
     <input type="hidden" id="memberhash" />
-    <input type="text" id="sessionid" value="@User.Identity.Name" />
+    <input type="hidden" id="sessionid" value="@User.Identity.Name" />
 
     <a href="#Info">
         <input type="button" id="loginBtn" value="下一步" />
@@ -38,11 +38,13 @@
                         $("#children").val(info.children).slider("refresh");
                         $("#vegetable").val(info.vegetable).slider("refresh");
 
-                        //address
-                        //bus
-                        //HSR
-                        //write
-                        //read
+                        $("#address").text(info.address);
+                        //$("#bus").val("" + info.bus).slider("refresh");
+                        //$("#HSR").val("" + info.HSR).slider("refresh");
+                        $("#bus").val("" + info.bus);
+                        $("#HSR").val("" + info.HSR);
+                        $("#write").text(info.write);
+                        $("#read").text(info.read);
                         
                         logined();
                     });

@@ -1,8 +1,47 @@
 ﻿<div role="main" class="ui-content">
 
-    Comming Soon
+    <label for="address">喜帖寄送地址</label>
+    <textarea cols="40" rows="8" name="address" id="address" required></textarea>
+
+    <label for="bus">租用台北=>高雄大巴</label>
+    <select name="bus" id="bus" data-role="slider">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+    </select>
+
+    <label for="HSR">代訂回程高雄=>台北高鐵</label>
+    <select name="HSR" id="HSR" data-role="slider">
+        <option value="false">No</option>
+        <option value="true">Yes</option>
+    </select>
+
+    <label for="write">寫一段話給我們(當天可能會顯示在螢幕上)</label>
+    <textarea cols="40" rows="8" name="write" id="write"></textarea>    
 
     <a href="#Chat">
-        <input type="button" value="更新" />
+        <input type="button" id="updateDetail" value="更新" />
     </a>
 </div>
+
+
+<script>
+    $(function () {
+        
+        $("#updateDetail").on("click", function () {
+            $.post(
+                "api/Information",
+                {
+                    hash: $("#memberhash").val(),
+                    memberid: $("#memberid").val(),
+                    address: $("#address").val(),
+                    bus: $("#bus").val(),
+                    HSR: $("#HSR").val(),
+                    write: $("#write").val()
+                },
+                function (result) {
+
+                }
+            )
+        });
+    });
+</script>

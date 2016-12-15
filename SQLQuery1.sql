@@ -22,3 +22,5 @@ truncate table ChatLogs
 insert Members values(N'紀伯喬', newid())
 insert Members values(N'陳玉雯')
 insert Information values('6E9063CF-2BF0-4193-ABF5-9EC8324474CB', 1, 1, 1, 1, 0, 0, null, 0, 0)
+
+update Information set address = N'台北市景華街22巷6號5樓', bus = 1, HSR = 1, write = 'test1', [read] = 'test2' where memberid = 1

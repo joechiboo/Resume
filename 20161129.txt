@@ -1,15 +1,18 @@
+form information create ok
+
+form detail update	-- not ok
+
+bus/
+HSR save 500 error
+
+-------------
+
+
+login JWD?
+
+
+
 session Id
 
 if(null)
 redirect
-
--------------
-
-form get/half
-
-form save/half
-
-detail_layout
-
-form update	--bug
-
