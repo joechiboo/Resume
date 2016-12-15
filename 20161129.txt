@@ -1,9 +1,4 @@
-form information create ok
-
-form detail update	-- not ok
-
-bus/
-HSR save 500 error
+validate address is null
 
 -------------
 
