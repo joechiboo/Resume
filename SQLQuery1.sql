@@ -1,8 +1,8 @@
 use [proy27_married]
 
 select * from Members with(nolock)
-select * from ChatLogs with(nolock)
-select * from Information with(nolock)
+	select * from ChatLogs with(nolock)
+	select * from Information with(nolock)
 
 select * from __MigrationHistory with(nolock)
 
@@ -18,6 +18,7 @@ drop table Information
 
 truncate table Members
 truncate table ChatLogs
+truncate table Information
 
 insert Members values(N'¬ö§B³ì', newid())
 insert Members values(N'³¯¥É¶²')
