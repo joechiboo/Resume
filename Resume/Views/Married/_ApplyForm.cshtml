@@ -34,18 +34,18 @@
 <script>
     $(function () {
 
-        $("input[type='radio']").on("click", function () {
+        $("input[type='radio'][name='join']").on("click", function () {
             var value = $(this).val();
 
             //console.log(value);
 
             switch (value) {
-                case "accept":
-                    $("#updateForm").closest("a").attr("href", "#Detail");
+                case "true":
+                    //$("#updateForm").closest("a").attr("href", "#Detail");
                     $("#number").val(1).change();
                     break;
-                case "cancel":
-                    $("#updateForm").closest("a").attr("href", "#Chat");
+                case "false":
+                    //$("#updateForm").closest("a").attr("href", "#Chat");
                     $("#number").val(0).change();
                     $("#children").val(0).change();
                     $("#vegetable").val(0).change();
