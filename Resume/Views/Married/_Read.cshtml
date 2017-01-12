@@ -1,0 +1,22 @@
+﻿
+
+<div role="main" class="ui-content">
+    <p id="read"></p>
+
+    <div>
+        <input type="text" id="secret" placeholder="有秘密和我們說" />
+        
+        <input type="button" id="say" value="送出" />
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#say").on("click", function () {
+            var message = $("#secret").val();
+
+            ajaxMessage(message);
+            $('#secret').val('').focus();
+        });
+    });
+</script>
