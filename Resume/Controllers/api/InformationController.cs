@@ -34,21 +34,16 @@ namespace Resume.Controllers.api
             if (_isExist(information.hash))
             {
                 var info = db.Infomations.Where(p => p.hash == information.hash).FirstOrDefault();
-
-                if (information.address == null)
-                {
+                
                     info.accept = information.accept;
                     info.side = information.side;
                     info.number = information.number;
                     info.children = information.children;
                     info.vegetable = information.vegetable;
-                }
-                else {
                     info.address = information.address;
                     info.bus = information.bus;
                     info.HSR = information.HSR;
                     info.write = information.write;
-                }
             }
             else {
                 db.Infomations.Add(information);

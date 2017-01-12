@@ -11,3 +11,13 @@ session Id
 
 if(null)
 redirect
+
+----------------
+
+DB azure
+
+寫一段話給我
+
+schedule 功能
+
+other function
