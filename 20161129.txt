@@ -1,19 +1,17 @@
 
+----------------
 
-login JWD?
+CB bug/to-do 
 
-session Id
+side / accept
 
-if(null)
-redirect
+add table "Table" id, name 
+add Information.tableid
+
+if(null) redirect to login
 
 ----------------
 
 schedule е\пр
 
 -----------------
-
-CB bug/to-do 
-
-side / accept
-add Members.valid column
