@@ -18,5 +18,7 @@ namespace Resume.DAL
         public DbSet<Member> Members { get; set; }
 
         public DbSet<Information> Infomations { get; set; }
+        
+        public DbSet<Table> Tables { get; set; }
     }
 }

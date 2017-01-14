@@ -3,8 +3,6 @@
 
 CB bug/to-do 
 
-side / accept
-
 add table "Table" id, name 
 add Information.tableid
 

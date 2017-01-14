@@ -189,7 +189,12 @@
     <Compile Include="Migrations\201701141314075_add member.valid.Designer.cs">
       <DependentUpon>201701141314075_add member.valid.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701141450158_add table.cs" />
+    <Compile Include="Migrations\201701141450158_add table.Designer.cs">
+      <DependentUpon>201701141450158_add table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Table.cs" />
     <Compile Include="Models\ChatLog.cs" />
     <Compile Include="Models\Information.cs" />
     <Compile Include="Models\Member.cs" />
@@ -345,6 +350,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Married\_Read.cshtml" />
+    <Content Include="Views\Married\_Seat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -411,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701141314075_add member.valid.resx">
       <DependentUpon>201701141314075_add member.valid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701141450158_add table.resx">
+      <DependentUpon>201701141450158_add table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

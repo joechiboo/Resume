@@ -46,6 +46,13 @@
                         $("#write").text(info.write);
                         $("#read").text(info.read);
                         
+                        if (info.tableid && info.tableid != "") {
+                            $("#" + info.tableid).attr("fill", "red");
+                            $("#tableText").text("您的座位在第 " + info.tableid + " 桌。");
+                        } else {
+                            $("#tableText").text("尚未安排您的桌次。");
+                        }
+                        
                         logined();
                     });
                     

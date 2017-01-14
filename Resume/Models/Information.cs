@@ -30,5 +30,7 @@ namespace Resume.Models
 
         public string write { get; set; }
         public string read { get; set; }
-    }
+
+        public string tableid { get; set; }
+    } 
 }
