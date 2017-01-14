@@ -185,6 +185,10 @@
     <Compile Include="Migrations\201612030203013_remove device.Designer.cs">
       <DependentUpon>201612030203013_remove device.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701141314075_add member.valid.cs" />
+    <Compile Include="Migrations\201701141314075_add member.valid.Designer.cs">
+      <DependentUpon>201701141314075_add member.valid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChatLog.cs" />
     <Compile Include="Models\Information.cs" />
@@ -340,6 +344,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Married\_Read.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -403,6 +408,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612030203013_remove device.resx">
       <DependentUpon>201612030203013_remove device.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701141314075_add member.valid.resx">
+      <DependentUpon>201701141314075_add member.valid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

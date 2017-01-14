@@ -1,11 +1,6 @@
-validate address is null
-
--------------
 
 
 login JWD?
-
-
 
 session Id
 
@@ -14,10 +9,11 @@ redirect
 
 ----------------
 
-寫一段話給我
-
 schedule 功能
 
-other function
-
 -----------------
+
+CB bug/to-do 
+
+side / accept
+add Members.valid column
