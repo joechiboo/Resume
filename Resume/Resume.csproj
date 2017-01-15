@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201701141450158_add table.Designer.cs">
       <DependentUpon>201701141450158_add table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701141503251_update datatype.cs" />
+    <Compile Include="Migrations\201701141503251_update datatype.Designer.cs">
+      <DependentUpon>201701141503251_update datatype.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Table.cs" />
     <Compile Include="Models\ChatLog.cs" />
@@ -420,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701141450158_add table.resx">
       <DependentUpon>201701141450158_add table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701141503251_update datatype.resx">
+      <DependentUpon>201701141503251_update datatype.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

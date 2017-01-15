@@ -3,8 +3,7 @@
 
 CB bug/to-do 
 
-add table "Table" id, name 
-add Information.tableid
+coding svg
 
 if(null) redirect to login
 

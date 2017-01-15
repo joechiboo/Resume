@@ -21,6 +21,6 @@ where m.Valid = 1 or m.Valid is null
 order by m.id
 
 --- total comming
-select Sum(number) from Information as i with(nolock) 
+select Sum(number) as N'»««ÈÁ`¼Æ', Sum(vegetable) as N'¯À­¹' from Information as i with(nolock) 
 inner join Members as m with(nolock) on i.memberid = m.id
 where m.Valid = 1
