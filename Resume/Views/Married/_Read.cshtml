@@ -13,6 +13,11 @@
 <script>
     $(function () {
         $("#say").on("click", function () {
+            if ($("#memberid").val() == "") {
+                $("a[name='Login']").eq(0).click();
+                return false;
+            }
+
             var message = $("#secret").val();
 
             ajaxMessage(message);

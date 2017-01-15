@@ -37,6 +37,11 @@
                 var name = $('#displayname').val();
                 var message = $('#message').val();
 
+                if (name == "") {
+                    $("a[name='Login']").eq(0).click();
+                    return false;
+                }
+
                 if (message.trim() != "") {
                     ajaxMessage(message);
                     chat.server.send(name, message);

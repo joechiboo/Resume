@@ -57,10 +57,17 @@
         });
 
         $("#updateForm").on("click", function () {
+            var hash = $("#memberhash").val();
+
+            if (hash == "") {
+                $("a[name='Login']").eq(0).click();
+                return false;
+            }
+
             $.post(
                 "api/Information",
                 {
-                    hash: $("#memberhash").val(),
+                    hash: hash,
                     memberid: $("#memberid").val(),
                     accept: $("#join").find("input[name='join']:checked").val(),
                     side: $("#side").find("input[name='side']:checked").val(),
