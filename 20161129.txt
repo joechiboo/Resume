@@ -3,8 +3,6 @@
 
 CB bug/to-do 
 
-coding svg
-
 if(null) redirect to login
 
 ----------------

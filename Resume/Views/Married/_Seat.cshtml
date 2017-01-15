@@ -14,8 +14,8 @@
                                      14, 12, 13, 11, 15,
                                      20, 16, 18, 17, 19,
                                      24, 22, 23, 21, 25,
-                                     30, 26, 303, 27, 29,
-                                     32, 28, 31
+                                     28, 26, 303, 27, 29,
+                                     32, 30, 31
                                     };
 
             var t = 1;
@@ -29,7 +29,11 @@
                     if (t <= table)
                     {
                         @:<circle id="@tables[t - 1]" cx="@cx" cy="@cy" r="20" stroke="black" stroke-width="3" fill="none" />
-                        if (tables[t - 1] == 303) {
+                        if (tables[t - 1] >= 10 && tables[t - 1] < 100)
+                        {
+                            cx -= 5;
+                        }
+                        else if (tables[t - 1] >= 100) {
                             cx -= 10;
                         }
                         @:<text x="@(cx - 5)" y="@(cy + 4)" fill="black">@tables[t - 1]</text>
