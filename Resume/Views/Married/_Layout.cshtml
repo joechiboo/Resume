@@ -27,7 +27,21 @@
         chat.client.broadcastMessage = function (name, message) {
             createMessage(name, message);
 
-            $('body').barrager({ 'img': '/css/images/barrager.png', 'info': name + "：" + message });
+            var img = '/css/images/barrager.png';
+
+            switch (name) {
+                case "新郎":
+                case "紀伯喬":
+                    img = '/img/married/IMG_4122.jpg';
+                    break;
+                case "陳玉雯":
+                    img = '/img/married/IMG_3869.jpg';
+                    break;
+                default:
+                    break;
+            }
+
+            $('body').barrager({ 'img': img, 'info': name + "：" + message });
         };
 
         $.connection.hub.start().done(function () {           

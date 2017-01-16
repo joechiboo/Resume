@@ -4,18 +4,13 @@
     <input type="button" id="toggle" value="Toggle" />
     <input type="button" id="hide" value="Hide" />
     <input type="button" id="refresh" value="Refresh" />
-    <input type="hidden" id="displayname" value="新郎" />
-    目前線上人數：<span id="count">0</span>
-    <ul id="discussion"></ul>
-    <hr />
 
-    <div id="chatbox">
-        <input type="text" id="message" />
-        <input type="button" id="sendmessage" value="Send" />
+    <div>
+        <input type="text" id="adminmessage" />
+        <input type="button" id="adminsubmit" value="Send" />
     </div>
 </div>
-
-@section scripts{    
+ 
     <script>
         $(function () {
             $.connection.hub.start().done(function () {
@@ -30,7 +25,18 @@
                 $("#refresh").on("click", function () {
                     chat.server.refresh();
                 });
+
+                $('#adminsubmit').click(function () {
+                    var name = "新郎";
+                    var message = $('#adminmessage').val();
+
+                    if (message.trim() != "") {
+                        ajaxMessage(message);
+                        chat.server.send(name, message);
+
+                        $('#adminmessage').val('').focus();
+                    }
+                });
             });
         });
     </script>
-}

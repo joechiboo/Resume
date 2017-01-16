@@ -24,7 +24,7 @@ function ajaxMessage(message) {
     var id = $("#memberid").val();
 
     $.post(
-        "api/Chat",
+        "/api/Chat",
         {
             memberid: id,
             message: message
