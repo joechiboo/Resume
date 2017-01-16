@@ -355,6 +355,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Married\_Read.cshtml" />
     <Content Include="Views\Married\_Seat.cshtml" />
+    <Content Include="Views\Married\_Schedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

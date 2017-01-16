@@ -1,7 +1,7 @@
 ﻿<div role="main" class="ui-content">
     Dear 親,<br />
     用中文姓名當作帳號，所以請不要打錯，會導致對應不到的問題
-    <input type="text" id="loginName" placeholder="您的中文姓名" />
+    <input type="text" id="loginName" data-clear-btn="true" placeholder="您的中文姓名" />
 
     <input type="hidden" id="memberid" />
     <input type="hidden" id="memberhash" />
@@ -17,6 +17,12 @@
         $("#loginBtn").on("click", function () {
             var name = $("#loginName").val();
             var sessionid = $("#sessionid").val();
+
+            if (name.trim() == "") {
+                $("#loginName").focus();
+
+                return false;
+            }
 
             $.post(
                 "api/Members",
