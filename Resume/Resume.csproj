@@ -318,6 +318,7 @@
     <Content Include="Scripts\chat.js" />
     <Content Include="Scripts\classie.js" />
     <Content Include="Scripts\contact_me.js" />
+    <Content Include="Scripts\jquery-1.2.pack.js" />
     <Content Include="Scripts\jquery.barrager.js" />
     <Content Include="Scripts\jquery.barrager.min.js" />
     <Content Include="Scripts\jquery.mobile-1.4.5.js" />
@@ -359,6 +360,7 @@
     <Content Include="Views\Married\_Read.cshtml" />
     <Content Include="Views\Married\_Seat.cshtml" />
     <Content Include="Views\Married\_Schedule.cshtml" />
+    <Content Include="Views\Married\Bonus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

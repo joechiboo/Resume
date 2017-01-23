@@ -3,6 +3,7 @@
     <span>※目前桌子排列尚不準確。</span>
     <br/>
     <span id="tableText"></span>
+    <input type="hidden" id="txt">
 
     <svg height="420" width="300">
         @{
@@ -45,3 +46,51 @@
         }
     </svg>
 </div>
+
+<script>
+    var c = 0
+    var t
+    var length = 33;
+    var step = 10;
+
+    function Ready() {
+        $("circle").hide(1000);
+        $("text").hide(1000);
+
+        // Todo api getTalkMember
+
+        $("circle").show(1000);
+        $("text").show(1000);
+
+        length = $("circle").size();
+    }
+
+    function Go() {
+        timedCount();
+    }
+
+    function setStep(ms) {
+        step = ms;
+    }
+
+    function timedCount() {
+        $("circle[fill='red']").attr("fill", "none");
+        $("circle").eq(c).attr("fill", "red");
+
+        document.getElementById('txt').value = c
+        c = c + 1
+
+        t = setTimeout("timedCount()", step)
+
+        if (c >= length) {
+            c = 0;
+        }
+    }
+
+    function Stop() {
+        clearTimeout(t);
+
+        var table = $("circle").eq(c - 1).attr("id");
+        console.info("恭喜第 " + table + " 桌得獎。");
+    }
+</script>

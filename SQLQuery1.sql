@@ -1,8 +1,8 @@
-use [marry]
 
-select * from Members with(nolock)
-select * from ChatLogs with(nolock)
-select * from Information with(nolock)
+
+--select * from Members with(nolock)
+--select * from ChatLogs with(nolock)
+--select * from Information with(nolock)
 
 --- message log
 select m.Name, c.[message] from ChatLogs as c with(nolock)
