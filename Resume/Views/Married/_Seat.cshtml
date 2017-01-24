@@ -57,8 +57,6 @@
         $("circle").hide(1000);
         $("text").hide(1000);
 
-        // Todo api getTalkMember
-
         $("circle").show(1000);
         $("text").show(1000);
 
@@ -92,5 +90,20 @@
 
         var table = $("circle").eq(c - 1).attr("id");
         console.info("恭喜第 " + table + " 桌得獎。");
+    }
+
+    function Filter() {
+        $.ajax({
+            url: "/api/Tables",
+            async: false,
+            success: function (result) {
+                $(result).each(function (i, item) {
+                    $("#" + item).attr("stroke", "red");
+                });
+            }});
+
+        $("circle[stroke='black']").remove();
+
+        Ready();
     }
 </script>

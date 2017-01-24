@@ -160,6 +160,7 @@
     <Compile Include="Controllers\api\ChatController.cs" />
     <Compile Include="Controllers\api\InformationController.cs" />
     <Compile Include="Controllers\api\MembersController.cs" />
+    <Compile Include="Controllers\api\TablesController.cs" />
     <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarriedController.cs" />
@@ -360,7 +361,6 @@
     <Content Include="Views\Married\_Read.cshtml" />
     <Content Include="Views\Married\_Seat.cshtml" />
     <Content Include="Views\Married\_Schedule.cshtml" />
-    <Content Include="Views\Married\Bonus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
