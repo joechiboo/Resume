@@ -5,7 +5,7 @@
 --select * from [Tables] with(nolock)
 
 --update [Tables] set Name = N'®¦®v' where id = 24
---update Information set tableid = 24 where memberid in (52)
+--update Information set tableid = 31 where tableid = 29
 --update Members set Valid = 1 where id = 52
 
 --- message log
