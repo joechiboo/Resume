@@ -99,9 +99,9 @@ namespace Resume
             Clients.All.hide();
         }
 
-        public void Refresh()
-        {
-            Clients.All.refresh();
-        }
+        //public void Refresh()
+        //{
+        //    Clients.All.refresh();
+        //}
     }
 }
