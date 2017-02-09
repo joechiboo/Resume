@@ -317,7 +317,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cbpAnimatedHeader.js" />
     <Content Include="Scripts\cbpAnimatedHeader.min.js" />
-    <Content Include="Scripts\chat.js" />
+    <Content Include="Scripts\message.js" />
     <Content Include="Scripts\classie.js" />
     <Content Include="Scripts\contact_me.js" />
     <Content Include="Scripts\jquery-1.2.pack.js" />

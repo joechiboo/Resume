@@ -9,81 +9,87 @@
     <link href="~/css/rwd.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/mobile")
+    @Scripts.Render("~/bundles/barrager")   <!--彈幕-->
+    @*@Scripts.Render("~/bundles/particles")  <!--Background-->*@
+    @*@Scripts.Render("~/bundles/swipe")      <!--swipe-->*@
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/message.js"></script>
+    <script src="~/Scripts/keyboard.js"></script>
+    <script>
+        $(function () {
+            var chat = $.connection.chatHub;
+
+            $.connection.hub.start().done(function () {
+                chat.server.getUserList();
+
+                $('#sendmessage').click(function () {
+                    var name = $('#displayname').val();
+                    var message = $('#message').val();
+
+                    if (name == "") {
+                        $("a[name='Login']").eq(0).click();
+                        return false;
+                    }
+
+                    if (message.trim() != "") {
+                        ajaxMessage(message);
+                        chat.server.send(name, message);
+
+                        $('#message').val('').focus();
+                    }
+                });
+
+                $("#updateForm").on("click", function () {
+                    var id = $('#memberid').val();
+                    chat.server.getName(id);
+                });
+            });
+
+            chat.client.broadcastMessage = function (name, message) {
+                createMessage(name, message);
+
+                var img = '/css/images/barrager.png';
+
+                switch (name) {
+                    case "新郎":
+                    case "紀伯喬":
+                        img = '/img/married/IMG_4122.jpg';
+                        break;
+                    case "陳玉雯":
+                        img = '/img/married/IMG_3869.jpg';
+                        break;
+                    default:
+                        break;
+                }
+
+                $('body').barrager({ 'img': img, 'info': name + "：" + message });
+            };
+
+            chat.client.toggle = function () {
+                $(".barrage").toggle();
+            };
+
+            chat.client.hide = function () {
+                $.fn.barrager.removeAll();
+            };
+
+            chat.client.refresh = function () {
+                location.reload();
+            };
+
+            chat.client.getUserlist = function (data) {
+                if (data) {
+                    var jsondata = $.parseJSON(data);
+                    $("#count").text(jsondata.length);
+                }
+            }
+        });
+    </script>
 </head>
 <body sroll="no">
 	@RenderBody()
-
-    @Scripts.Render("~/bundles/mobile")    
-	@Scripts.Render("~/bundles/barrager")   <!--彈幕-->
-	@*@Scripts.Render("~/bundles/particles")  <!--Background-->*@
-	@*@Scripts.Render("~/bundles/swipe")      <!--swipe-->*@
-	@RenderSection("scripts", required: false)
-    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-    <script src="~/Scripts/chat.js"></script>
-    <script src="~/Scripts/keyboard.js"></script>
-    <script>
-        var chat = $.connection.chatHub;
-        chat.client.broadcastMessage = function (name, message) {
-            createMessage(name, message);
-
-            var img = '/css/images/barrager.png';
-
-            switch (name) {
-                case "新郎":
-                case "紀伯喬":
-                    img = '/img/married/IMG_4122.jpg';
-                    break;
-                case "陳玉雯":
-                    img = '/img/married/IMG_3869.jpg';
-                    break;
-                default:
-                    break;
-            }
-
-            $('body').barrager({ 'img': img, 'info': name + "：" + message });
-        };
-
-        $.connection.hub.start().done(function () {           
-            chat.server.getUserList();
-
-            $('#sendmessage').click(function () {
-                var name = $('#displayname').val();
-                var message = $('#message').val();
-
-                if (name == "") {
-                    $("a[name='Login']").eq(0).click();
-                    return false;
-                }
-
-                if (message.trim() != "") {
-                    ajaxMessage(message);
-                    chat.server.send(name, message);
-
-                    $('#message').val('').focus();
-                }
-            });
-
-            $("#updateForm").on("click", function () {
-                var id = $('#memberid').val();
-                chat.server.getName(id);
-            });
-        });
-
-        chat.client.toggle = function () {
-            $(".barrage").toggle();
-        };
-
-        chat.client.hide = function () {
-            $.fn.barrager.removeAll();
-        };
-
-        chat.client.getUserlist = function (data) {
-            if (data) {
-                var jsondata = $.parseJSON(data);
-                $("#count").text(jsondata.length);
-            }
-        }
-    </script>
 </body>
 </html>
