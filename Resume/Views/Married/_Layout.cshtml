@@ -16,7 +16,7 @@
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
-    <script src="~/Scripts/message.js"></script>
+    <script src="~/Scripts/message.js?t=@DateTime.Now.ToString("ddhhMMss")"></script>
     <script src="~/Scripts/keyboard.js"></script>
     <script>
         $(function () {

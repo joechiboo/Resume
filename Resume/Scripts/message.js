@@ -3,7 +3,7 @@
     var length = $(log).find("li").length;
 
     $("#chatlog").prepend(
-        '<li data-icon="delete" class=""><a href="#" class="ui-btn ui-btn-icon-right ui-icon-delete">' + name + ':' + message + '</a></li>'
+        '<li class="ui-li-static ui-body-inherit">' + name + ':' + message + '</li>'
     );
     if (length >= 5) {
         $(log).find("li").eq(5).slideUp();
