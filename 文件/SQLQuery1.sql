@@ -4,14 +4,23 @@
 --select * from Information with(nolock) order by memberid
 --select * from [Tables] with(nolock)
 
+select m.name, i.[address], * from Information as i with(nolock) 
+	inner join Members m with(nolock) on i.memberid = m.id 
+where 
+--side = 1
+--and [address] is not null
+memberid not in (28, 59, 54)
+order by memberid
+
 --update [Tables] set Name = N'恩師' where id = 24
---update Information set tableid = 31 where tableid = 29
---update Members set Valid = 1 where id = 52
+--update Information set address = N'台北市中山區松江路152號12樓1202E' where memberid = 47
+--update Members set Valid = 1 where id in (61, 63)
 
 --- message log
 select m.Name, c.[message] from ChatLogs as c with(nolock)
 inner join Members as m on c.MemberId = m.id
 where m.Valid = 1 or m.Valid is null
+order by LogTime
 
 --- total comming per member 
 select 
