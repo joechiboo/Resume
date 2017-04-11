@@ -59,10 +59,10 @@
         $("#updateForm").on("click", function () {
             var hash = $("#memberhash").val();
 
-            if (hash == "") {
-                $("a[name='Login']").eq(0).click();
-                return false;
-            }
+            //if (hash == "") {
+            //    $("a[name='Login']").eq(0).click();
+            //    return false;
+            //}
 
             $.post(
                 "api/Information",
