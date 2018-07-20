@@ -1,0 +1,195 @@
+@{
+    Layout = null;
+}
+<title>端早節</title>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/custom.css" rel="stylesheet" />
+
+<!-- Params -->
+<input type="hidden" id="id" value="" />
+
+<div class="leftArea">
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+
+    <div class="container" style="height:60vh">
+        <input type="text" id="message" />
+        <input type="button" id="sendmessage" value="Send" />
+        <input type="hidden" id="displayname" />
+        <label>Total Online:</label><span id="count">1</span>
+        <ul id="discussion"></ul>
+    </div>
+</div>
+
+<div class="rightArea">
+    <div class="jumbotron" style="height:55vh">
+        <input type="hidden" id="questionId" value="" />
+        <input type="hidden" id="solution" value="" />
+        <h1 class="display-4 hint">Question:</h1>
+        <p class="lead" id="question">
+            This is a simple question sentence, maybe can be a text, vedio, image, etc...
+        </p>
+        <p class="lead" id="translate" style="display:none;">
+
+        </p>
+        <img src="~/Reasons/1.jpg" style="display: none; max-height: 50vh;" />
+    </div>
+    <div class="btn-block" style="height:40vh">
+        @*<div class="input-group">
+                <button type="button" class="btn btn-primary btn-lg" style="width:50%;">Option 1</button>
+                <button type="button" class="btn btn-success btn-lg" style="width:50%">Option 2</button>
+            </div>
+            <div class="input-group">
+                <button type="button" class="btn btn-warning btn-lg" style="width:50%">Option 3</button>
+                <button type="button" class="btn btn-danger btn-lg" style="width:50%">Option 4</button>
+            </div>*@
+        <div class="input-group">
+            <button type="button" class="btn btn-primary btn-lg option" style="width:100%;" id="option1" value="A">Option 1</button>
+        </div>
+        <div class="input-group">
+            <button type="button" class="btn btn-success btn-lg option" style="width:100%;" id="option2" value="B">Option 2</button>
+        </div>
+        <div class="input-group">
+            <button type="button" class="btn btn-warning btn-lg option" style="width:100%;" id="option3" value="C">Option 3</button>
+        </div>
+        <div class="input-group">
+            <button type="button" class="btn btn-danger btn-lg option" style="width:100%;" id="option4" value="D">Option 4</button>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+<script src="/signalr/hubs"></script>
+<script src="~/Scripts/canvas.js"></script>
+<script>
+    function _addTextInChatBox(name, msg) {
+        var length = $('#discussion li').length;
+
+        if (length >= 23) {
+            $('#discussion li').eq(0).remove();
+        }
+
+        $('#discussion').append(
+            '<li><strong>' + name +
+            '</strong>:&nbsp;&nbsp;' + msg + '</li>'
+        );
+    }
+
+    $(function () {
+        // Declare a proxy to reference the hub.
+        var chat = $.connection.chatHub;
+        // Create a function that the hub can call to broadcast messages.
+        chat.client.broadcastMessage = function (name, message) {
+            // Html encode display name and message.
+            var encodedName = $('<div />').text(name).html();
+            var encodedMsg = $('<div />').text(message).html();
+            // Add the message to the page.
+            _addTextInChatBox(encodedName, encodedMsg);
+        };
+
+        chat.client.getUserlist = function (list) {
+            //console.log(list.length);
+            $("#count").text(list.length);
+        };
+
+        chat.client.sendIdToUser = function (id) {
+            $("#id").val(id);
+        }
+
+        chat.client.sendQuestionToUser = function (q) {
+            cleanOption();
+
+            $("#option1").addClass("btn-primary");
+            $("#option2").addClass("btn-success");
+            $("#option3").addClass("btn-warning");
+            $("#option4").addClass("btn-danger");
+
+            $("#questionId").val(q.id);
+            if (q.id > 0) {
+                $("#question").text(q.question);
+                $("#option1").text(q.option1);
+                $("#option2").text(q.option2);
+                $("#option3").text(q.option3);
+                $("#option4").text(q.option4);
+                $("#translate").text(q.translate);
+                $("#solution").val(q.solution);
+                $("img").attr("src", "/Reasons/" + q.id + ".jpg");
+            } else {
+                $("#question").text("woo, the questions are empty!");
+            }
+        }
+
+        // Get the user name and store it to prepend to messages.
+        $('#displayname').val(prompt('Enter your name:', ''));
+        // Set initial focus to message input box.
+        $('#message').focus();
+        // Start the connection.
+        $.connection.hub.start().done(function () {
+            chat.server.setUserName($('#displayname').val());
+
+            $('#sendmessage').click(function () {
+                if ($('#message').val().trim() == "") {
+                    return;
+                }
+
+                // Call the Send method on the hub.
+                chat.server.send($('#displayname').val(), $('#message').val());
+                // Clear text box and reset focus for next comment.
+                $('#message').val('').focus();
+            });
+
+            $(".option").click(function () {
+                // clean option
+                cleanOption();
+
+                var id = $("#id").val();
+                var questionId = $("#questionId").val();
+                var answer = $(this).attr("value");
+
+                // show correct answer
+                showCorrectAnswer(answer);
+
+                chat.server.answer(id, questionId, answer);
+            });
+        });
+
+        $(".hint").hover(function () {
+            $("#translate").fadeIn();
+            $("img").fadeIn();
+            $(".option").fadeOut();
+        }, function () {
+            $("#translate").fadeOut();
+            $("img").fadeOut();
+            $(".option").fadeIn();
+        });
+    });
+
+    function cleanOption() {
+        $(".option")
+            .removeClass("btn-primary")
+            .removeClass("btn-success")
+            .removeClass("btn-warning")
+            .removeClass("btn-danger");
+    }
+
+    function showCorrectAnswer(answer) {
+        // 顯示正確
+        var solution = $("#solution").val();
+        $(".option[value='" + solution + "']").addClass("btn-success");
+
+        // 若答錯, 顯示錯誤
+        if (answer != solution) {
+            $(".option[value='" + answer + "']").addClass("btn-danger");
+        }
+    }
+
+    //键盘操作
+    $(document).keyup(function (event) {
+        switch (event.keyCode) {
+            case 13:    // enter
+                $("#sendmessage").click();
+                $("#message").focus();
+                break;
+        };
+        return false;
+    });
+</script>
