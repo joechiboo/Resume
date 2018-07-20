@@ -180,40 +180,33 @@
     }
 
     function settingOptions(q) {
-        switch (q.solution) {
-            case "A":
-                $("#option1").text(q.option1);
-                $("#option1").attr("value", "A");
+        var buttons = ["#option1", "#option3"];
+        var array = [q.option1, q.option2, q.option3, q.option4];
+        var options = ['A', 'B', 'C', 'D'];
 
-                $("#option3").text(q.option3);
-                $("#option3").attr("value", "C");
-                break;
-            case "B":
-                $("#option1").text(q.option2);
-                $("#option1").attr("value", "B");
+        // find Corrent Answer
+        var i = options.indexOf(q.solution);
 
-                $("#option3").text(q.option4);
-                $("#option3").attr("value", "D");
-                break;
-            case "C":
-                $("#option3").text(q.option3);
-                $("#option3").attr("value", "C");
+        // remove Correct Answer
+        var correnctAnswer = array.splice(i, 1);
+        options.splice(i, 1);
 
-                $("#option1").text(q.option1);
-                $("#option1").attr("value", "A");
-                break;
-            case "D":
-                $("#option3").text(q.option4);
-                $("#option3").attr("value", "D");
+        // random 0 to 1
+        var b = Math.floor(Math.random() * 2);        
 
-                $("#option1").text(q.option2);
-                $("#option1").attr("value", "B");
-                break;
-            default:
-                break;
-        }
+        // setting Correnct Answer
+        $(buttons[b]).text(correnctAnswer[0]);
+        $(buttons[b]).attr("value", q.solution);
+        buttons.splice(b, 1);
+                
+        // random 0 to 2
+        var r = Math.floor(Math.random() * 3);
+
+        // setting Error Options
+        $(buttons[0]).text(array[r]);
+        $(buttons[0]).attr("value", options[r]);
     }
-
+    
     function showCorrectAnswer(answer) {
         // 顯示正確
         var solution = $("#solution").val();
