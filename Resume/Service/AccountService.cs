@@ -29,7 +29,7 @@ namespace Resume.Service
                     SELECT @Id AS id
                 ", conn))
                 {
-                    cmd.Parameters.Add("@name", System.Data.SqlDbType.VarChar).Value = name;
+                    cmd.Parameters.Add("@name", System.Data.SqlDbType.NVarChar).Value = name;
                     conn.Open();
                     var result = cmd.ExecuteScalar();
                     return result != null ? (int)result : 0;
