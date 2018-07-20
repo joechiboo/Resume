@@ -5,58 +5,61 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/custom.css" rel="stylesheet" />
 
-<!-- Params -->
-<input type="hidden" id="id" value="" />
+<div id="Content">
+    <!-- Params -->
+    <input type="hidden" id="id" value="" />
 
-<div class="leftArea">
-    <canvas id="myCanvas" width="480" height="320"></canvas>
+    <div class="leftArea">
+        <canvas id="myCanvas" width="480" height="320"></canvas>
 
-    <div class="container" style="height:60vh">
-        <input type="text" id="message" />
-        <input type="button" id="sendmessage" value="Send" />
-        <input type="hidden" id="displayname" />
-        <label>Total Online:</label><span id="count">1</span>
-        <ul id="discussion"></ul>
+        <div class="container" style="height:60vh">
+            <input type="text" id="message" />
+            <input type="button" id="sendmessage" value="Send" />
+            <input type="hidden" id="displayname" />
+            <label>Total Online:</label><span id="count">1</span>
+            <ul id="discussion"></ul>
+        </div>
     </div>
-</div>
 
-<div class="rightArea">
-    <div class="jumbotron" style="height:55vh">
-        <input type="hidden" id="questionId" value="" />
-        <input type="hidden" id="solution" value="" />
-        <h1 class="display-4 hint">Question:</h1>
-        <p class="lead" id="question">
-            This is a simple question sentence, maybe can be a text, vedio, image, etc...
-        </p>
-        <p class="lead" id="translate" style="display:none;">
+    <div class="rightArea">
+        <div class="jumbotron" style="height:55vh">
+            <input type="hidden" id="questionId" value="" />
+            <input type="hidden" id="solution" value="" />
+            <h1 class="display-4 hint">Question:</h1>
+            <p class="lead" id="question">
+                This is a simple question sentence, maybe can be a text, vedio, image, etc...
+            </p>
+            <p class="lead" id="translate" style="display:none;">
 
-        </p>
-        <img src="~/Reasons/1.jpg" style="display: none; max-height: 50vh;" />
-    </div>
-    <div class="btn-block" style="height:40vh">
-        @*<div class="input-group">
-                <button type="button" class="btn btn-primary btn-lg" style="width:50%;">Option 1</button>
-                <button type="button" class="btn btn-success btn-lg" style="width:50%">Option 2</button>
-            </div>
+            </p>
+            <img src="~/Reasons/1.jpg" style="display: none; max-height: 50vh;" />
+        </div>
+        <div class="btn-block" style="height:40vh">
             <div class="input-group">
-                <button type="button" class="btn btn-warning btn-lg" style="width:50%">Option 3</button>
-                <button type="button" class="btn btn-danger btn-lg" style="width:50%">Option 4</button>
-            </div>*@
-        <div class="input-group">
-            <button type="button" class="btn btn-primary btn-lg option" style="width:100%;" id="option1" value="A">Option 1</button>
-        </div>
-        <div class="input-group">
-            <button type="button" class="btn btn-success btn-lg option" style="width:100%;" id="option2" value="B">Option 2</button>
-        </div>
-        <div class="input-group">
-            <button type="button" class="btn btn-warning btn-lg option" style="width:100%;" id="option3" value="C">Option 3</button>
-        </div>
-        <div class="input-group">
-            <button type="button" class="btn btn-danger btn-lg option" style="width:100%;" id="option4" value="D">Option 4</button>
+                <button type="button" class="btn btn-primary btn-lg option" style="width:50%;" id="option1" value="A">Option 1</button>
+                <button type="button" class="btn btn-warning btn-lg option" style="width:50%;" id="option3" value="C">Option 2</button>
+            </div>
+            @*<div class="input-group">
+                    <button type="button" class="btn btn-warning btn-lg" style="width:50%">Option 3</button>
+                    <button type="button" class="btn btn-danger btn-lg" style="width:50%">Option 4</button>
+                </div>*@
+            @*<div class="input-group">
+                    <button type="button" class="btn btn-primary btn-lg option" style="width:100%;" id="option1" value="A">Option 1</button>
+                </div>
+                <div class="input-group">
+                    <button type="button" class="btn btn-success btn-lg option" style="width:100%;" id="option2" value="B">Option 2</button>
+                </div>
+                <div class="input-group">
+                    <button type="button" class="btn btn-warning btn-lg option" style="width:100%;" id="option3" value="C">Option 3</button>
+                </div>
+                <div class="input-group">
+                    <button type="button" class="btn btn-danger btn-lg option" style="width:100%;" id="option4" value="D">Option 4</button>
+                </div>*@
         </div>
     </div>
 </div>
 <script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/jquery.mobile-1.4.5.min.js"></script>
 <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
 <script src="/signalr/hubs"></script>
 <script src="~/Scripts/canvas.js"></script>
@@ -97,19 +100,14 @@
 
         chat.client.sendQuestionToUser = function (q) {
             cleanOption();
-
-            $("#option1").addClass("btn-primary");
-            $("#option2").addClass("btn-success");
-            $("#option3").addClass("btn-warning");
-            $("#option4").addClass("btn-danger");
+            optionInit();            
 
             $("#questionId").val(q.id);
             if (q.id > 0) {
                 $("#question").text(q.question);
-                $("#option1").text(q.option1);
-                $("#option2").text(q.option2);
-                $("#option3").text(q.option3);
-                $("#option4").text(q.option4);
+
+                settingOptions(q);                
+
                 $("#translate").text(q.translate);
                 $("#solution").val(q.solution);
                 $("img").attr("src", "/Reasons/" + q.id + ".jpg");
@@ -138,11 +136,14 @@
             });
 
             $(".option").click(function () {
+                var questionId = $("#questionId").val();
+                if (questionId == "0") {
+                    return;
+                }
+
                 // clean option
                 cleanOption();
-
-                var id = $("#id").val();
-                var questionId = $("#questionId").val();
+                var id = $("#id").val();            // userid                
                 var answer = $(this).attr("value");
 
                 // show correct answer
@@ -171,6 +172,48 @@
             .removeClass("btn-danger");
     }
 
+    function optionInit() {
+        $("#option1").addClass("btn-primary");
+        $("#option2").addClass("btn-success");
+        $("#option3").addClass("btn-warning");
+        $("#option4").addClass("btn-danger");
+    }
+
+    function settingOptions(q) {
+        switch (q.solution) {
+            case "A":
+                $("#option1").text(q.option1);
+                $("#option1").attr("value", "A");
+
+                $("#option3").text(q.option3);
+                $("#option3").attr("value", "C");
+                break;
+            case "B":
+                $("#option1").text(q.option2);
+                $("#option1").attr("value", "B");
+
+                $("#option3").text(q.option4);
+                $("#option3").attr("value", "D");
+                break;
+            case "C":
+                $("#option3").text(q.option3);
+                $("#option3").attr("value", "C");
+
+                $("#option1").text(q.option1);
+                $("#option1").attr("value", "A");
+                break;
+            case "D":
+                $("#option3").text(q.option4);
+                $("#option3").attr("value", "D");
+
+                $("#option1").text(q.option2);
+                $("#option1").attr("value", "B");
+                break;
+            default:
+                break;
+        }
+    }
+
     function showCorrectAnswer(answer) {
         // 顯示正確
         var solution = $("#solution").val();
@@ -191,5 +234,14 @@
                 break;
         };
         return false;
+    });
+
+    $(function () {
+        $("#Content")
+            .on("swipeleft", function () {
+                $("#option1").click();
+            }).on("swiperight", function () {
+                $("#option3").click();
+            });
     });
 </script>
