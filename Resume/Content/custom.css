@@ -32,18 +32,26 @@ button {
 }
 
 /*RWD*/
-.leftArea,.rightArea{
-    display:block;
+.leftArea, .rightArea {
+    display: block;
     float: left;
     width: 50%;
 }
 
 @media all and (max-width: 992px) {
     .leftArea {
-        display:none;
+        display: none;
     }
 
     .rightArea {
         width: 100%;
+    }
+
+    .lead {
+        font-size: 3rem;
+    }
+
+    .option {
+        font-size: 3rem;
     }
 }
