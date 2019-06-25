@@ -1,0 +1,57 @@
+﻿canvas {
+    background: #eee;
+}
+
+.container {
+    background-color: #99CCFF;
+    border: thick solid #808080;
+    padding: 20px;
+    *margin: 20px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+button {
+    height: 20vh;
+    *height: 10vh;
+}
+
+.lead {
+    font-size: 2rem;
+}
+
+/*RWD*/
+.leftArea, .rightArea {
+    display: block;
+    float: left;
+    width: 50%;
+}
+
+@media all and (max-width: 992px) {
+    .leftArea {
+        display: none;
+    }
+
+    .rightArea {
+        width: 100%;
+    }
+
+    .lead {
+        font-size: 3rem;
+    }
+
+    .option {
+        font-size: 3rem;
+    }
+}

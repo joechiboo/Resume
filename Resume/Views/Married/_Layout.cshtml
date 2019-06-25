@@ -23,7 +23,7 @@
             var chat = $.connection.chatHub;
 
             $.connection.hub.start().done(function () {
-                chat.server.getUserList();
+                //chat.server.getUserList();
 
                 $('#sendmessage').click(function () {
                     var name = $('#displayname').val();

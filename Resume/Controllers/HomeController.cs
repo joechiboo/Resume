@@ -1,4 +1,4 @@
-﻿using Resume.Untity;
+﻿//using Resume.Untity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Resume.Controllers
                 "連絡電話： " + phone + "<br/>" +                
                 
                 "您的意見： " + message + "<br/>";
-            GMailer.Send(email, Body);
+            //GMailer.Send(email, Body);
 
             return RedirectToAction("Index");
         }

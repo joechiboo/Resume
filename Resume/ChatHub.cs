@@ -20,88 +20,107 @@ namespace Resume
     }
     public class ChatHub : Hub
     {
+        public AccountService _serice = new AccountService();
+        public MessageService _m = new MessageService();
+        public QuestionService _q = new QuestionService();
         public static List<UserInfo> UserList = new List<UserInfo>();
-        
-        private MemberService _member = new MemberService();
 
         public override Task OnConnected()
         {
-            // 查詢用戶
-            var user = _GetUser(Context.ConnectionId);
+            var user = _GetUser(Context.ConnectionId);  // 查询用户。
 
-            // 判斷用戶是否存在，否則新增
-            if (user == null)
+            if (user == null)   //判断用户是否存在,否则添加进集合
             {
                 user = new UserInfo()
                 {
-                    Name = "",
                     ContextID = Context.ConnectionId
                 };
                 UserList.Add(user);
             }
-
+            _GetUserList();
             return base.OnConnected();
-        }
-
-        private UserInfo _GetUser(string id)
-        {
-            return UserList.SingleOrDefault(p => p.ContextID == id);
-        }
-
-        public void GetName(int id)
-        {
-            // 查詢用戶
-            var user = _GetUser(Context.ConnectionId);
-            if (user != null)
-            {
-                user.Name = id.ToString();
-                Clients.Client(Context.ConnectionId).showID(Context.ConnectionId);
-            }
-
-            GetUserList();
-        }
-
-        public void GetUserList()
-        {
-            var item = from a in UserList
-                       select new { a.Name, a.ContextID };
-            string jsondata = JsonConvert.SerializeObject(item.ToList());
-            Clients.All.getUserlist(jsondata);
         }
 
         public override Task OnDisconnected(bool stop)
         {
             var user = _GetUser(Context.ConnectionId);
+
+            //判断用户是否存在,存在则删除
             if (user != null)
             {
-                // 刪除
+                //删除用户
                 UserList.Remove(user);
+
+            }
+            //更新所有用户的列表
+            _GetUserList();
+            return base.OnDisconnected(true);
+        }
+
+        private UserInfo _GetUser(string id)
+        {
+            return UserList.FirstOrDefault(u => u.ContextID == id);
+        }
+
+        private void _setName(string name)
+        {
+            var user = _GetUser(Context.ConnectionId);  // 查询用户。
+            if (user != null)
+            {
+                user.Name = name;
             }
 
-            // 更新用戶列表
-            GetUserList();
-            return base.OnDisconnected(stop);
+            // 回傳Id給User
+            var id = _serice.Login(name);
+            Clients.Client(Context.ConnectionId).sendIdToUser(id);
+
+            // 發第一題給user
+            var q = _q.Get(id);
+            Clients.Client(Context.ConnectionId).sendQuestionToUser(q);
+        }
+
+        private void _GetUserList()
+        {
+            var list = from a in UserList
+                       select new { a.Name, a.ContextID };
+            //string jsondata = JsonConvert.SerializeObject(itme.ToList());
+            Clients.All.getUserlist(list);
+        }
+
+        public void setUserName(string name)
+        {
+            _setName(name);
+
+            _GetUserList();
+        }
+
+        public void refreshTargetPage(string userId)
+        {
+            Clients.Client(userId).broadcastRefresh();
+        }
+
+        public void sendTargetUserSurvey(string name)
+        {
+            var user = UserList.FirstOrDefault(u => u.Name == name);
+            if (user != null)
+            {
+            }
         }
 
         public void Send(string name, string message)
         {
+            _m.MessageLog(name, message);
+
             // Call the broadcastMessage method to update clients.
             Clients.All.broadcastMessage(name, message);
         }
 
-        public void Toggle()
+        public void Answer(int id, int questionId, string answer)
         {
-            Clients.All.toggle();
-        }
+            _q.Answer(id, questionId, answer);
 
-        public void Hide()
-        {
-            Clients.All.hide();
-        }
-
-        public void Refresh()
-        {
-            Clients.All.refresh();
+            var q = _q.Get(id);
+            Clients.Client(Context.ConnectionId).sendQuestionToUser(q);
         }
     }
 }

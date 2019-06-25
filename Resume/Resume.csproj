@@ -161,6 +161,7 @@
     <Compile Include="Controllers\api\InformationController.cs" />
     <Compile Include="Controllers\api\MembersController.cs" />
     <Compile Include="Controllers\api\TablesController.cs" />
+    <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\GuestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarriedController.cs" />
@@ -204,11 +205,15 @@
     <Compile Include="Models\Information.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\AccountService.cs" />
     <Compile Include="Service\MemberService.cs" />
+    <Compile Include="Service\MessageService.cs" />
+    <Compile Include="Service\QuestionService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Untity\GMailer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
     <Content Include="css\animate.css" />
     <Content Include="css\images\close.png" />
     <Content Include="css\married.css" />
@@ -246,8 +251,6 @@
     <Content Include="img\arduino\logo.png" />
     <Content Include="img\arduino\成品.jpg" />
     <Content Include="img\arduino\未來.jpg" />
-    <Content Include="img\arduino\deathhand.mp4" />
-    <Content Include="img\arduino\modafinish.mp4" />
     <Content Include="img\arduino\設計圖.jpg" />
     <Content Include="img\barrager\barrager.css" />
     <Content Include="img\drawsomething\frog.jpg" />
@@ -259,8 +262,6 @@
     <Content Include="img\drawsomething\母雞帶小雞.jpg" />
     <Content Include="img\drawsomething\豬豬.jpg" />
     <Content Include="img\education.svg" />
-    <Content Include="img\exercise\上籃.mp4" />
-    <Content Include="img\exercise\中距離.mp4" />
     <Content Include="img\logo.png" />
     <Content Include="img\married\120161120211917_1852.jpg" />
     <Content Include="img\married\IMG_3869.jpg" />
@@ -312,9 +313,50 @@
     <Content Include="img\tank.svg" />
     <Content Include="img\wechatui\icon_tabbar.png" />
     <Content Include="img\wechatui\pic_article.png" />
+    <Content Include="Reasons\1.jpg" />
+    <Content Include="Reasons\10.jpg" />
+    <Content Include="Reasons\11.jpg" />
+    <Content Include="Reasons\12.jpg" />
+    <Content Include="Reasons\13.jpg" />
+    <Content Include="Reasons\14.jpg" />
+    <Content Include="Reasons\15.jpg" />
+    <Content Include="Reasons\16.jpg" />
+    <Content Include="Reasons\17.jpg" />
+    <Content Include="Reasons\18.jpg" />
+    <Content Include="Reasons\19.jpg" />
+    <Content Include="Reasons\2.jpg" />
+    <Content Include="Reasons\20.jpg" />
+    <Content Include="Reasons\21.jpg" />
+    <Content Include="Reasons\22.jpg" />
+    <Content Include="Reasons\23.jpg" />
+    <Content Include="Reasons\24.jpg" />
+    <Content Include="Reasons\25.jpg" />
+    <Content Include="Reasons\26.jpg" />
+    <Content Include="Reasons\27.jpg" />
+    <Content Include="Reasons\28.jpg" />
+    <Content Include="Reasons\29.jpg" />
+    <Content Include="Reasons\3.jpg" />
+    <Content Include="Reasons\30.jpg" />
+    <Content Include="Reasons\31.jpg" />
+    <Content Include="Reasons\32.jpg" />
+    <Content Include="Reasons\33.jpg" />
+    <Content Include="Reasons\34.jpg" />
+    <Content Include="Reasons\35.jpg" />
+    <Content Include="Reasons\36.jpg" />
+    <Content Include="Reasons\37.jpg" />
+    <Content Include="Reasons\38.jpg" />
+    <Content Include="Reasons\39.jpg" />
+    <Content Include="Reasons\4.jpg" />
+    <Content Include="Reasons\40.jpg" />
+    <Content Include="Reasons\5.jpg" />
+    <Content Include="Reasons\6.jpg" />
+    <Content Include="Reasons\7.jpg" />
+    <Content Include="Reasons\8.jpg" />
+    <Content Include="Reasons\9.jpg" />
     <Content Include="Scripts\bootstrap-dialog.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\canvas.js" />
     <Content Include="Scripts\cbpAnimatedHeader.js" />
     <Content Include="Scripts\cbpAnimatedHeader.min.js" />
     <Content Include="Scripts\message.js" />
@@ -362,11 +404,15 @@
     <Content Include="Views\Married\_Read.cshtml" />
     <Content Include="Views\Married\_Seat.cshtml" />
     <Content Include="Views\Married\_Schedule.cshtml" />
+    <Content Include="Views\Exam\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="css\images\icons-png\" />
     <Folder Include="css\images\icons-svg\" />
+    <Folder Include="file\" />
+    <Folder Include="img\exercise\" />
+    <Folder Include="Untity\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -376,8 +422,6 @@
     <Content Include="less\freelancer.less" />
     <Content Include="less\mixins.less" />
     <Content Include="less\variables.less" />
-    <Content Include="file\android-debug.apk" />
-    <Content Include="file\android.apk" />
     <Content Include="Views\Home\_Navigation.cshtml" />
     <Content Include="Views\Home\_Header.cshtml" />
     <Content Include="Views\Home\_Footer.cshtml" />
