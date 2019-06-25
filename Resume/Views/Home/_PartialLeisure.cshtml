@@ -1,0 +1,175 @@
+﻿<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>Leisure</h2>
+                        <hr class="star-primary">
+
+                        <div class="row" id="LeisureCtrl">
+                            <div class="col-md-3 col-xs-12">
+                                <button title="myPainting" type="button" class="btn btn-info btn-lg" style="width:100%">Painting</button>
+                            </div>
+                            <div class="col-md-3 col-xs-12">
+                                <button title="myCreating" type="button" class="btn btn-info btn-lg" style="width:100%">Creating</button>
+                            </div>
+                            <div class="col-md-3 col-xs-12">
+                                <button title="myExercise" type="button" class="btn btn-info btn-lg active" style="width:100%">Exercise</button>
+                            </div>
+                            <div class="col-md-3 col-xs-12">
+                                <button title="myMusic" type="button" class="btn btn-info btn-lg" style="width:100%">Music</button>
+                            </div>
+                        </div>
+
+                        <br />
+
+                        <div class="row">
+                            <div id="myPainting" class="carousel slide">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myPainting" data-slide-to="0" class="active"></li>
+                                    @for (var i = 1; i < 8; i++)
+                                    {
+                                        <li data-target="#myPainting" data-slide-to="@i"></li>
+                                    }
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="~/img/drawsomething/frog.jpg" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/partice-3.png" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/partice-5.png" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/partice-6.png" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/partice-10.png" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/mother.jpg" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/母雞帶小雞.jpg" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/drawsomething/豬豬.jpg" />
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#myPainting" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                                <a class="right carousel-control" href="#myPainting" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div id="myCreating" class="carousel slide">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myCreating" data-slide-to="0" class="active"></li>
+                                    @for (var i = 1; i < 8; i++)
+                                    {
+                                        <li data-target="#myCreating" data-slide-to="@i"></li>
+                                    }
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="~/img/arduino/logo.png" style="max-height:480px;cursor:pointer" onclick="location.href='@Url.Action("Index", "SocialCircle")'" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/arduino/成品.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/arduino/設計圖.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item ">
+                                        <img src="~/img/arduino/1.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/arduino/3.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item">
+                                        <iframe style="max-height:480px" src="https://www.youtube.com/embed/y-yF6d4JFF8" frameborder="0" allowfullscreen></iframe>
+                                        @*<video id="video1" controls="controls" style=" width: 70%;">
+                                                <source src="https://youtu.be/y-yF6d4JFF8" type="video/youtube" />
+                                            </video>*@
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/arduino/Button.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/arduino/HelloWorld.jpg" style="max-height:480px" />
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#myCreating" data-slide="prev"><span class=" glyphicon glyphicon-chevron-left"></span></a>
+                                <a class="right carousel-control" href="#myCreating" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div id="myExercise" class="carousel slide">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myExercise" data-slide-to="0" class="active"></li>
+                                    @for (var i = 1; i < 2; i++)
+                                    {
+                                        <li data-target="#myExercise" data-slide-to="@i"></li>
+                                    }
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <video id="video1" controls="controls">
+                                            <source src="~/img/exercise/%e4%b8%8a%e7%b1%83.mp4" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                    <div class="item">
+                                        <video id="video2" controls="controls" style="width: 70%;">
+                                            <source src="~/img/exercise/%e4%b8%ad%e8%b7%9d%e9%9b%a2.mp4" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#myExercise" data-slide="prev"><span class=" glyphicon glyphicon-chevron-left"></span></a>
+                                <a class="right carousel-control" href="#myExercise" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div id="myMusic" class="carousel slide">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myMusic" data-slide-to="0" class="active"></li>
+                                    @for (var i = 1; i < 3; i++)
+                                    {
+                                        <li data-target="#myMusic" data-slide-to="@i"></li>
+                                    }
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="~/img/music/尾牙.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/music/HongKung.jpg" style="max-height:480px" />
+                                    </div>
+                                    <div class="item">
+                                        <img src="~/img/music/violin.jpg" style="max-height:480px" />
+                                    </div>
+                                </div>
+                                <a class="left carousel-control" href="#myMusic" data-slide="prev"><span class=" glyphicon glyphicon-chevron-left"></span></a>
+                                <a class="right carousel-control" href="#myMusic" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                            </div>
+                        </div>
+
+                        <br />
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

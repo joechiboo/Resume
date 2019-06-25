@@ -405,6 +405,9 @@
     <Content Include="Views\Married\_Seat.cshtml" />
     <Content Include="Views\Married\_Schedule.cshtml" />
     <Content Include="Views\Exam\Index.cshtml" />
+    <Content Include="Views\Home\_SelectedProject.cshtml" />
+    <Content Include="Views\Home\_PartialLeisure.cshtml" />
+    <Content Include="Views\Home\_unFinish.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
