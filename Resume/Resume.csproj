@@ -262,6 +262,8 @@
     <Content Include="img\drawsomething\母雞帶小雞.jpg" />
     <Content Include="img\drawsomething\豬豬.jpg" />
     <Content Include="img\education.svg" />
+    <Content Include="img\exercise\上籃.mp4" />
+    <Content Include="img\exercise\中距離.mp4" />
     <Content Include="img\logo.png" />
     <Content Include="img\married\120161120211917_1852.jpg" />
     <Content Include="img\married\IMG_3869.jpg" />
@@ -411,7 +413,6 @@
     <Folder Include="css\images\icons-png\" />
     <Folder Include="css\images\icons-svg\" />
     <Folder Include="file\" />
-    <Folder Include="img\exercise\" />
     <Folder Include="Untity\" />
   </ItemGroup>
   <ItemGroup>
